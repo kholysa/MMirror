@@ -8,8 +8,8 @@ namespace MMirror.Model
 {
     class weatherDay
     {
-        int hi { get; set; }
-        int lo { get; set; }
+        public double hi { get; set; }
+        double lo { get; set; }
         int[] eightHourForcast = new int[8]; 
         String day { get; set; }
         enum MyEnum

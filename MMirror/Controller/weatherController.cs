@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.IO;
+using Newtonsoft.Json.Linq;
+using MMirror.Model;
+
 
 
 namespace MMirror.Controller
@@ -24,6 +27,17 @@ namespace MMirror.Controller
             String jsData = n.DownloadString(url);
             File.WriteAllText(Path.Combine(Environment.CurrentDirectory, @"..\..\Data\", "jsWeatherData.json"), jsData);
             //now we will have to create c# weatherDay classes with the selected attributes
+            createJSONObject(jsData);
+        }
+        private void createJSONObject(string jsData)
+        {
+            //this dynamic build an object whose attributes are decided on runtime (seems like a shady coding 
+            //practice but idc c# is bae)
+            dynamic weather = JObject.Parse(jsData);
+            
+            weatherDay current = new weatherDay();
+            current.hi = weather.list[0].main.temp_max;
+            
         }
       
         

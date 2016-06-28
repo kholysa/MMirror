@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using MMirror.Controller;
-
+using MMirror.Model;
 
 namespace MMirror
 {
@@ -17,6 +17,7 @@ namespace MMirror
         [STAThread]
         static void Main()
         {
+            MMirrorManager mm = new MMirrorManager();
             weatherController wc = new weatherController();
             wc.getWeatherJSON();
             Application.EnableVisualStyles();
