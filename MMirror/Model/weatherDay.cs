@@ -20,7 +20,7 @@ namespace MMirror.Model
             thunderstorms, snow, mist
         };
         public double rain { get; set; } // no code dealing with this yet
-        public double snow { get; set; }
+        public double snow { get; set; } // same here
         
         public int feelsLike { get; set; } //not supported, not used
         public int humidity { get; set; }

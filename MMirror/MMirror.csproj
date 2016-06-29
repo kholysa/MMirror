@@ -93,6 +93,7 @@
     <None Include="Data\city.list.json" />
     <None Include="Data\jsWeatherDataCurrent.json" />
     <None Include="Data\jsWeatherDataForecast.json" />
+    <None Include="Data\stockInfo.csv" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -56,6 +56,7 @@ namespace MMirror.Controller
             current.humidity = weatherCurrent.main.humidity;
             current.location = weatherCurrent.name;
 
+            //we will get the forecast data from the second URL
             dynamic weatherForecast = JObject.Parse(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, @"..\..\Data\", "jsWeatherDataForecast.json")));
             int[] twelveHourForecast = new int[4];
             for (int i = 0; i < twelveHourForecast.Length; i++)
@@ -63,7 +64,7 @@ namespace MMirror.Controller
                 twelveHourForecast[i] = weatherForecast.list[i].main.temp;
                 
             }
-
+            //placing the current weather in the mmc 
             mmc.setWeather(0, current);
 
         }
