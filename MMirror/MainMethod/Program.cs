@@ -18,11 +18,18 @@ namespace MMirror
         static void Main()
         {
             MMirrorManager mm = new MMirrorManager();
-            weatherController wc = new weatherController();
+            weatherController wc = new weatherController(mm);
             wc.getWeatherJSON();
+           
+            stockInfo si = new stockInfo();
+            si.getStockFile();
+           
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Form1 windows = new Form1();
+            //windows.mmc = mm;
+            Application.Run(windows);
+
         }
     }
 }

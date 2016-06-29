@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\stockInfo.cs" />
     <Compile Include="Controller\weatherController.cs" />
     <Compile Include="Model\MMirrorManager.cs" />
     <Compile Include="Model\sports.cs" />
@@ -86,8 +87,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Data\city.list.json" />
-    <None Include="Data\jsWeatherData.json" />
+    <None Include="Data\jsWeatherDataCurrent.json" />
+    <None Include="Data\jsWeatherDataForecast.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -8,18 +8,28 @@ namespace MMirror.Model
 {
     class weatherDay
     {
+        public string location { get; set; } 
         public double hi { get; set; }
-        double lo { get; set; }
-        int[] eightHourForcast = new int[8]; 
-        String day { get; set; }
-        enum MyEnum
+        public double lo { get; set; }
+        public int[] twelveHourForcast = new int[4]; 
+        public String day { get; set; }
+        public enum MyEnum
         {
             clearSky, fewClouds, scatteredClouds,
             brokenClouds, showerRain, rain,
             thunderstorms, snow, mist
         };
-        double rain { get; set; }
-        double snow { get; set; }
-        int feelsLike { get; set; }
+        public double rain { get; set; } // no code dealing with this yet
+        public double snow { get; set; }
+        
+        public int feelsLike { get; set; } //not supported, not used
+        public int humidity { get; set; }
+        
+        
+        public string toString()
+        {
+            return location + "" + hi.ToString() + lo.ToString() + "\n" + Convert.ToString(twelveHourForcast) + "\n" + day + Convert.ToString(humidity);
+        }
     }
+    
 }

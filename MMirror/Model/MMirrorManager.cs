@@ -8,24 +8,46 @@ namespace MMirror.Model
 {
     class MMirrorManager
     {
-        List<weatherDay> weather { get; set; }
-        List<sports> sport { get; set; }
+        public List<weatherDay> weather = new List<weatherDay>(5); 
+        public sports sport = new sports();
         bool isInitialised = false;
-        public MMirrorManager()
+        static MMirrorManager()
         {
+        }
+       
+        public sports getSports()
+        {
+            return sport;
+        }
+
+        public void setSports(sports sp){
+            this.sport = sp;
+        }
+        public List<weatherDay> getWeather()
+        {
+            return this.weather;
+        }
+        public void setWeather(List<weatherDay> input)
+        {
+            this.weather = input;
+        }
+        public void setWeather(int i,weatherDay weatherInput)
+        {
+            this.weather[i] = weatherInput;
+        }
             //store that we did create this upon startup 
-            isInitialised = true;
+          //  isInitialised = true;
             //filling the list with a blank weatherDay to allow for modification in the 5 day forcast
-            weather = new List<weatherDay>(5);
-            for (int i = 0; i < 5; i++)
+          //  weather = new List<weatherDay>(5);
+     /*       for (int i = 0; i < 5; i++)
             {
                 weather.Add(new weatherDay());
             }
-            //
-            sport = new List<sports>(1);
-            sport.Add(new sports());
+            
+           sport = new List<sports>(1);
+           sport.Add(new sports());
         }
- /*       public void modifyWeather(int day, weatherDay newWeather){
+        public void modifyWeather(int day, weatherDay newWeather){
             weather.RemoveAt(day);
             weather.Insert(day, newWeather);
         }
