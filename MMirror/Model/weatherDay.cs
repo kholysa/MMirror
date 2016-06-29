@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MMirror.Model
 {
-    class weatherDay
+    public class weatherDay
     {
         public string location { get; set; } 
         public double hi { get; set; }
@@ -28,7 +28,7 @@ namespace MMirror.Model
         
         public string toString()
         {
-            return location + "" + hi.ToString() + lo.ToString() + "\n" + Convert.ToString(twelveHourForcast) + "\n" + day + Convert.ToString(humidity);
+            return location + "\n" + Convert.ToString(Convert.ToInt32(hi-273.15))+"\n" + Convert.ToString(Convert.ToInt32(lo-273.15)) + "\n" + Convert.ToString(twelveHourForcast) + "\n" + day +"\n"+ Convert.ToString(humidity)+"%";
         }
     }
     

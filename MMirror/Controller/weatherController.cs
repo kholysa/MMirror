@@ -15,11 +15,11 @@ namespace MMirror.Controller
     class weatherController
     {
         //urlCurrent gives current data gives 
-        String urlCurrent = "http://api.openweathermap.org/data/2.5/weather?id=285570&appid=30b0e4a13dcb98a91143652520f8f108";
+        String urlCurrent = "http://api.openweathermap.org/data/2.5/weather?id=6077243&appid=30b0e4a13dcb98a91143652520f8f108";
         //urlForecast gives future data in a long ass list
-        String urlForecast = "http://api.openweathermap.org/data/2.5/forecast?id=285570&appid=30b0e4a13dcb98a91143652520f8f108";
+        String urlForecast = "http://api.openweathermap.org/data/2.5/forecast?id=6077243&appid=30b0e4a13dcb98a91143652520f8f108";
 
-        String cityCode = "285570";//kuwait's code for openweathermap
+        String cityCode = "6077243";//Montreal's code for openweathermap
         String API = "&APPID=30b0e4a13dcb98a91143652520f8f108"; //my personal api
 
         MMirrorManager mmc;
@@ -63,10 +63,10 @@ namespace MMirror.Controller
                 twelveHourForecast[i] = weatherForecast.list[i].main.temp;
                 
             }
-            mmc.weather.Add(current);
+
+            mmc.setWeather(0, current);
 
         }
-
       
         
     }

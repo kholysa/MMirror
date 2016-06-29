@@ -17,7 +17,7 @@ namespace MMirror
         [STAThread]
         static void Main()
         {
-            MMirrorManager mm = new MMirrorManager();
+            MMirrorManager mm = MMirrorManager.Instance;
             weatherController wc = new weatherController(mm);
             wc.getWeatherJSON();
            

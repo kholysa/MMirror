@@ -6,13 +6,62 @@ using System.Threading.Tasks;
 
 namespace MMirror.Model
 {
-    class MMirrorManager
+    public sealed class MMirrorManager
+    {
+        private static MMirrorManager instance = null;
+        private static readonly object padlock = new object();
+        private List<weatherDay> weather = new List<weatherDay>(5);
+        private sports sport = new sports();
+
+        private MMirrorManager() { }
+
+        public static MMirrorManager Instance
+        {
+            get
+            {
+                lock (padlock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new MMirrorManager();
+                    }
+                    return instance;
+                }
+            }
+        }
+        public sports getSports()
+        {
+            return sport;
+        }
+
+        public void setSports(sports sp)
+        {
+            this.sport = sp;
+        }
+        public List<weatherDay> getWeather()
+        {
+            return this.weather;
+        }
+        public void setWeather(List<weatherDay> input)
+        {
+            this.weather = input;
+        }
+        public void setWeather(int i, weatherDay weatherInput)
+        {
+            this.weather.Insert(i,weatherInput);
+        }
+    }
+
+   /* class MMirrorManager
     {
         public List<weatherDay> weather = new List<weatherDay>(5); 
         public sports sport = new sports();
         bool isInitialised = false;
         static MMirrorManager()
         {
+        }
+        public MMirrorManager getInstance(){
+            return this;
         }
        
         public sports getSports()
@@ -55,6 +104,6 @@ namespace MMirror.Model
         {
             sport.RemoveAt(0);
             sport.Add(newSport);
-        }*/
-    }
+        }
+    }*/
 }

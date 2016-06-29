@@ -28,9 +28,10 @@ namespace MMirror
 
         private void label1_Click(object sender, EventArgs e)
         {
-            MMirrorManager mmc = new MMirrorManager();
+            MMirrorManager mmc = MMirrorManager.Instance; 
             
-            label1.Text=mmc.weather[0].toString();
+            label1.Text=mmc.getWeather()[0].toString();
+           
  
         }
     }
