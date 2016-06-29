@@ -21,10 +21,15 @@ namespace MMirror.Model
         };
         public double rain { get; set; } // no code dealing with this yet
         public double snow { get; set; } // same here
+        public string description { get; set; }
         
         public int feelsLike { get; set; } //not supported, not used
         public int humidity { get; set; }
-        
+        public weatherDay()
+        {
+            this.rain = -50;
+            this.snow = -50;
+        }
         
         public string toString()
         {

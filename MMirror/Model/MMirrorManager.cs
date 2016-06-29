@@ -8,10 +8,10 @@ namespace MMirror.Model
 {
     public sealed class MMirrorManager
     {
-        private static MMirrorManager instance = null;
-        private static readonly object padlock = new object();
-        private List<weatherDay> weather = new List<weatherDay>(5);
-        private sports sport = new sports();
+        public static MMirrorManager instance = null;
+        public static readonly object padlock = new object();
+        public List<weatherDay> weather = new List<weatherDay>(5);
+        public sports sport = new sports();
 
         private MMirrorManager() { }
 

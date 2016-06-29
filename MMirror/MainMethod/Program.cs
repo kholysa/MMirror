@@ -21,13 +21,12 @@ namespace MMirror
             weatherController wc = new weatherController(mm);
             wc.getWeatherJSON();
            
-            stockInfo si = new stockInfo();
-            si.getStockFile();
+            //stockInfo si = new stockInfo();
+            //si.getStockFile();
            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Form1 windows = new Form1();
-            //windows.mmc = mm;
             Application.Run(windows);
 
         }
