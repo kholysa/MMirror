@@ -17,11 +17,12 @@ namespace MMirror.Controller
     class weatherController
     {
         //urlCurrent gives current data gives 
-        String urlCurrent = "http://api.openweathermap.org/data/2.5/weather?id=6077243&appid=30b0e4a13dcb98a91143652520f8f108";
+        String urlCurrent = "http://api.openweathermap.org/data/2.5/weather?id=285570&appid=30b0e4a13dcb98a91143652520f8f108";
         //urlForecast gives future data in a long ass list
-        String urlForecast = "http://api.openweathermap.org/data/2.5/forecast?id=6077243&appid=30b0e4a13dcb98a91143652520f8f108";
+        String urlForecast = "http://api.openweathermap.org/data/2.5/forecast?id=285570&appid=30b0e4a13dcb98a91143652520f8f108";
 
-        String cityCode = "6077243";//Montreal's code for openweathermap
+        String mtlCode = "6077243";//Montreal's code for openweathermap
+        string kuwaitCode = "";
         String API = "&APPID=30b0e4a13dcb98a91143652520f8f108"; //my personal api
 
         MMirrorManager mmc;
@@ -119,14 +120,16 @@ namespace MMirror.Controller
             }
             for (listCount = 0; listCount < 32; listCount++)
             {
+                count++;
                 weatherDay temp = new weatherDay();
                 temp.hi = weatherForecast.list[count].main.temp_max;
                 temp.lo = weatherForecast.list[count].main.temp_min;
                 temp.day = Convert.ToString(Convert.ToDateTime(weatherForecast.list[count].dt_txt).DayOfWeek);
                 temp.humidity = weatherForecast.list[count].main.humidity;
                 temp.location = weatherForecast.city.name;
-                temp.weatherConditions = weatherForecast.list[3].weather[0].icon;
+                temp.weatherConditions = weatherForecast.list[listCount].weather[0].icon;
                 fourDaylist[listCount] = temp;
+                
             }
             listCount = 0;
             weatherDay[] fourDayForecast = new weatherDay[4];
@@ -143,20 +146,29 @@ namespace MMirror.Controller
             string icon = "";
             for (int i = 0; i < 4; i++)
             {
+                avgHi = fourDaylist[i*8].hi;
+                avgHumidity = 0;
+                avgLo = fourDaylist[i*8].lo;
                 for (int j = 0; j < 8; j++)
                 {
-                    
-                   
-                    avgHi = avgHi + fourDaylist[listCount].hi;
-                    avgLo = avgLo + fourDaylist[listCount].lo;
+                    if (avgHi < fourDaylist[listCount].hi)
+                    {
+                        avgHi = fourDaylist[listCount].hi;
+                    }
+                    if (avgLo > fourDaylist[listCount].lo)
+                    {
+                        avgLo = fourDaylist[listCount].lo;
+                    }                    
+                    //avgHi = avgHi + fourDaylist[listCount].hi;
+                    //avgLo = avgLo + fourDaylist[listCount].lo;
                     day = fourDaylist[listCount].day;
                     avgHumidity = avgHumidity + fourDaylist[listCount].humidity;
                     location = fourDaylist[listCount].location;
-                    icon = fourDaylist[listCount].weatherConditions;
+                    icon = fourDaylist[i*8+4].weatherConditions;
                     listCount++;
                 }
-                avgHi = avgHi / 8;
-                avgLo = avgLo / 8;
+               // avgHi = avgHi / 8;
+               // avgLo = avgLo / 8;
                 avgHumidity = avgHumidity / 8;
                 
                 weatherDay temp = new weatherDay();
@@ -170,15 +182,12 @@ namespace MMirror.Controller
                 fourDayForecast[i] = temp;
 
             }
-            // printing debugger :D   
-            // string json = Newtonsoft.Json.JsonConvert.SerializeObject(fourDayForecast);
-            // File.WriteAllText(Path.Combine(Environment.CurrentDirectory, @"..\..\Data\", "tempArray.json"), json);
-            for (int i = 1; i < 5; i++)
+           for (int i = 1; i < 5; i++)
             {
                 mmc.setWeather(i, fourDayForecast[i - 1]);
             }
             // printing debugger :D   
-            string json = Newtonsoft.Json.JsonConvert.SerializeObject(this.mmc);
+            string json = Newtonsoft.Json.JsonConvert.SerializeObject(fourDaylist);
             File.WriteAllText(Path.Combine(Environment.CurrentDirectory, @"..\..\Data\", "tempArray.json"), json);
             
 

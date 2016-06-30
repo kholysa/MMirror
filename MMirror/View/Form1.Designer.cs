@@ -46,6 +46,18 @@
             this.currentTime2 = new System.Windows.Forms.Label();
             this.currentTime1 = new System.Windows.Forms.Label();
             this.currentHumidityIMG = new System.Windows.Forms.Label();
+            this.forecastTemp4 = new System.Windows.Forms.Label();
+            this.forecastTemp3 = new System.Windows.Forms.Label();
+            this.forecastTemp2 = new System.Windows.Forms.Label();
+            this.forecastTemp1 = new System.Windows.Forms.Label();
+            this.forecastLo1 = new System.Windows.Forms.Label();
+            this.forecastLo2 = new System.Windows.Forms.Label();
+            this.forecastLo3 = new System.Windows.Forms.Label();
+            this.forecastLo4 = new System.Windows.Forms.Label();
+            this.forecastIMG1 = new System.Windows.Forms.Label();
+            this.forecastIMG2 = new System.Windows.Forms.Label();
+            this.forecastIMG3 = new System.Windows.Forms.Label();
+            this.forecastIMG4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,6 +112,18 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Controls.Add(this.forecastIMG1);
+            this.panel1.Controls.Add(this.forecastIMG2);
+            this.panel1.Controls.Add(this.forecastIMG3);
+            this.panel1.Controls.Add(this.forecastIMG4);
+            this.panel1.Controls.Add(this.forecastLo1);
+            this.panel1.Controls.Add(this.forecastLo2);
+            this.panel1.Controls.Add(this.forecastLo3);
+            this.panel1.Controls.Add(this.forecastLo4);
+            this.panel1.Controls.Add(this.forecastTemp1);
+            this.panel1.Controls.Add(this.forecastTemp2);
+            this.panel1.Controls.Add(this.forecastTemp3);
+            this.panel1.Controls.Add(this.forecastTemp4);
             this.panel1.Controls.Add(this.currentHumidityIMG);
             this.panel1.Controls.Add(this.currentTime4);
             this.panel1.Controls.Add(this.currentTime3);
@@ -268,6 +292,142 @@
             this.currentHumidityIMG.TabIndex = 16;
             this.currentHumidityIMG.Text = "      ";
             // 
+            // forecastTemp4
+            // 
+            this.forecastTemp4.AutoSize = true;
+            this.forecastTemp4.Font = new System.Drawing.Font("Georgia", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forecastTemp4.ForeColor = System.Drawing.Color.White;
+            this.forecastTemp4.Location = new System.Drawing.Point(1695, 435);
+            this.forecastTemp4.Name = "forecastTemp4";
+            this.forecastTemp4.Size = new System.Drawing.Size(147, 56);
+            this.forecastTemp4.TabIndex = 17;
+            this.forecastTemp4.Text = "label1";
+            // 
+            // forecastTemp3
+            // 
+            this.forecastTemp3.AutoSize = true;
+            this.forecastTemp3.Font = new System.Drawing.Font("Georgia", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forecastTemp3.ForeColor = System.Drawing.Color.White;
+            this.forecastTemp3.Location = new System.Drawing.Point(1695, 318);
+            this.forecastTemp3.Name = "forecastTemp3";
+            this.forecastTemp3.Size = new System.Drawing.Size(147, 56);
+            this.forecastTemp3.TabIndex = 18;
+            this.forecastTemp3.Text = "label1";
+            // 
+            // forecastTemp2
+            // 
+            this.forecastTemp2.AutoSize = true;
+            this.forecastTemp2.Font = new System.Drawing.Font("Georgia", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forecastTemp2.ForeColor = System.Drawing.Color.White;
+            this.forecastTemp2.Location = new System.Drawing.Point(1695, 214);
+            this.forecastTemp2.Name = "forecastTemp2";
+            this.forecastTemp2.Size = new System.Drawing.Size(147, 56);
+            this.forecastTemp2.TabIndex = 19;
+            this.forecastTemp2.Text = "label1";
+            // 
+            // forecastTemp1
+            // 
+            this.forecastTemp1.AutoSize = true;
+            this.forecastTemp1.Font = new System.Drawing.Font("Georgia", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forecastTemp1.ForeColor = System.Drawing.Color.White;
+            this.forecastTemp1.Location = new System.Drawing.Point(1695, 102);
+            this.forecastTemp1.Name = "forecastTemp1";
+            this.forecastTemp1.Size = new System.Drawing.Size(147, 56);
+            this.forecastTemp1.TabIndex = 20;
+            this.forecastTemp1.Text = "label1";
+            // 
+            // forecastLo1
+            // 
+            this.forecastLo1.AutoSize = true;
+            this.forecastLo1.Font = new System.Drawing.Font("Georgia", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forecastLo1.ForeColor = System.Drawing.Color.LightGray;
+            this.forecastLo1.Location = new System.Drawing.Point(1810, 114);
+            this.forecastLo1.Name = "forecastLo1";
+            this.forecastLo1.Size = new System.Drawing.Size(108, 41);
+            this.forecastLo1.TabIndex = 24;
+            this.forecastLo1.Text = "label1";
+            // 
+            // forecastLo2
+            // 
+            this.forecastLo2.AutoSize = true;
+            this.forecastLo2.Font = new System.Drawing.Font("Georgia", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forecastLo2.ForeColor = System.Drawing.Color.LightGray;
+            this.forecastLo2.Location = new System.Drawing.Point(1810, 226);
+            this.forecastLo2.Name = "forecastLo2";
+            this.forecastLo2.Size = new System.Drawing.Size(108, 41);
+            this.forecastLo2.TabIndex = 23;
+            this.forecastLo2.Text = "label1";
+            // 
+            // forecastLo3
+            // 
+            this.forecastLo3.AutoSize = true;
+            this.forecastLo3.Font = new System.Drawing.Font("Georgia", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forecastLo3.ForeColor = System.Drawing.Color.LightGray;
+            this.forecastLo3.Location = new System.Drawing.Point(1810, 330);
+            this.forecastLo3.Name = "forecastLo3";
+            this.forecastLo3.Size = new System.Drawing.Size(108, 41);
+            this.forecastLo3.TabIndex = 22;
+            this.forecastLo3.Text = "label1";
+            // 
+            // forecastLo4
+            // 
+            this.forecastLo4.AutoSize = true;
+            this.forecastLo4.Font = new System.Drawing.Font("Georgia", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forecastLo4.ForeColor = System.Drawing.Color.LightGray;
+            this.forecastLo4.Location = new System.Drawing.Point(1810, 447);
+            this.forecastLo4.Name = "forecastLo4";
+            this.forecastLo4.Size = new System.Drawing.Size(108, 41);
+            this.forecastLo4.TabIndex = 21;
+            this.forecastLo4.Text = "label1";
+            // 
+            // forecastIMG1
+            // 
+            this.forecastIMG1.AutoSize = true;
+            this.forecastIMG1.Font = new System.Drawing.Font("Georgia", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forecastIMG1.ForeColor = System.Drawing.Color.White;
+            this.forecastIMG1.Location = new System.Drawing.Point(1605, 102);
+            this.forecastIMG1.Name = "forecastIMG1";
+            this.forecastIMG1.Size = new System.Drawing.Size(48, 56);
+            this.forecastIMG1.TabIndex = 28;
+            this.forecastIMG1.Text = "  ";
+            this.forecastIMG1.Click += new System.EventHandler(this.forecastIMG1_Click);
+            // 
+            // forecastIMG2
+            // 
+            this.forecastIMG2.AutoSize = true;
+            this.forecastIMG2.Font = new System.Drawing.Font("Georgia", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forecastIMG2.ForeColor = System.Drawing.Color.White;
+            this.forecastIMG2.Location = new System.Drawing.Point(1605, 214);
+            this.forecastIMG2.Name = "forecastIMG2";
+            this.forecastIMG2.Size = new System.Drawing.Size(48, 56);
+            this.forecastIMG2.TabIndex = 27;
+            this.forecastIMG2.Text = "  ";
+            this.forecastIMG2.Click += new System.EventHandler(this.forecastIMG2_Click);
+            // 
+            // forecastIMG3
+            // 
+            this.forecastIMG3.AutoSize = true;
+            this.forecastIMG3.Font = new System.Drawing.Font("Georgia", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forecastIMG3.ForeColor = System.Drawing.Color.White;
+            this.forecastIMG3.Location = new System.Drawing.Point(1605, 318);
+            this.forecastIMG3.Name = "forecastIMG3";
+            this.forecastIMG3.Size = new System.Drawing.Size(48, 56);
+            this.forecastIMG3.TabIndex = 26;
+            this.forecastIMG3.Text = "  ";
+            this.forecastIMG3.Click += new System.EventHandler(this.forecastIMG3_Click);
+            // 
+            // forecastIMG4
+            // 
+            this.forecastIMG4.AutoSize = true;
+            this.forecastIMG4.Font = new System.Drawing.Font("Georgia", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forecastIMG4.ForeColor = System.Drawing.Color.White;
+            this.forecastIMG4.Location = new System.Drawing.Point(1605, 435);
+            this.forecastIMG4.Name = "forecastIMG4";
+            this.forecastIMG4.Size = new System.Drawing.Size(48, 56);
+            this.forecastIMG4.TabIndex = 25;
+            this.forecastIMG4.Text = "  ";
+            this.forecastIMG4.Click += new System.EventHandler(this.forecastIMG4_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -304,6 +464,18 @@
         private System.Windows.Forms.Label currentTime2;
         private System.Windows.Forms.Label currentTime1;
         private System.Windows.Forms.Label currentHumidityIMG;
+        private System.Windows.Forms.Label forecastTemp1;
+        private System.Windows.Forms.Label forecastTemp2;
+        private System.Windows.Forms.Label forecastTemp3;
+        private System.Windows.Forms.Label forecastTemp4;
+        private System.Windows.Forms.Label forecastIMG1;
+        private System.Windows.Forms.Label forecastIMG2;
+        private System.Windows.Forms.Label forecastIMG3;
+        private System.Windows.Forms.Label forecastIMG4;
+        private System.Windows.Forms.Label forecastLo1;
+        private System.Windows.Forms.Label forecastLo2;
+        private System.Windows.Forms.Label forecastLo3;
+        private System.Windows.Forms.Label forecastLo4;
 
     }
 }
