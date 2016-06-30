@@ -62,17 +62,23 @@ namespace MMirror.Controller
             current.day = DateTime.Now.DayOfWeek.ToString();
             current.humidity = weatherCurrent.main.humidity;
             current.location = weatherCurrent.name;
+            current.weatherConditions = weatherCurrent.weather[0].icon;
 
             //we will get the forecast data from the second URL
             dynamic weatherForecast = JObject.Parse(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, @"..\..\Data\", "jsWeatherDataForecast.json")));
             int[] twelveHourForecast = new int[4];
+            string[] twelveHourTimes = new string[4];
             for (int i = 0; i < twelveHourForecast.Length; i++)
             {
                 twelveHourForecast[i] = weatherForecast.list[i].main.temp;
+                twelveHourTimes[i] = weatherForecast.list[i].dt_txt;
             }
-
-       
-
+            int[] dt = new int[4];
+            for (int i = 0; i < 4; i++)
+            {
+                dt[i] = Convert.ToDateTime(twelveHourTimes[i]).Hour;
+            }
+            current.twelveHourTimes = dt;
             //not every API reply will have a rain parameter
             try{
 
@@ -119,6 +125,7 @@ namespace MMirror.Controller
                 temp.day = Convert.ToString(Convert.ToDateTime(weatherForecast.list[count].dt_txt).DayOfWeek);
                 temp.humidity = weatherForecast.list[count].main.humidity;
                 temp.location = weatherForecast.city.name;
+                temp.weatherConditions = weatherForecast.list[3].weather[0].icon;
                 fourDaylist[listCount] = temp;
             }
             listCount = 0;
@@ -132,8 +139,8 @@ namespace MMirror.Controller
             double avgLo = 0;
             string day = "";
             int avgHumidity = 0;
-            string location = "";           
-            
+            string location = "";
+            string icon = "";
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 8; j++)
@@ -145,7 +152,7 @@ namespace MMirror.Controller
                     day = fourDaylist[listCount].day;
                     avgHumidity = avgHumidity + fourDaylist[listCount].humidity;
                     location = fourDaylist[listCount].location;
-                   
+                    icon = fourDaylist[listCount].weatherConditions;
                     listCount++;
                 }
                 avgHi = avgHi / 8;
@@ -158,6 +165,7 @@ namespace MMirror.Controller
                 temp.humidity = avgHumidity;
                 temp.day = day;
                 temp.location = location;
+                temp.weatherConditions = icon;
 
                 fourDayForecast[i] = temp;
 

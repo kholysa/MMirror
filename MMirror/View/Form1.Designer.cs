@@ -28,41 +28,252 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.currentWeather = new System.Windows.Forms.Label();
+            this.currentForecast1 = new System.Windows.Forms.Label();
+            this.currentHumidity = new System.Windows.Forms.Label();
+            this.currentRain = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.forecastWeather = new System.Windows.Forms.Label();
+            this.location = new System.Windows.Forms.Label();
+            this.currentLocation = new System.Windows.Forms.Label();
+            this.currentSnow = new System.Windows.Forms.Label();
+            this.currentImage = new System.Windows.Forms.Label();
+            this.currentForecast4 = new System.Windows.Forms.Label();
+            this.currentForecast3 = new System.Windows.Forms.Label();
+            this.currentForecast2 = new System.Windows.Forms.Label();
+            this.currentTime4 = new System.Windows.Forms.Label();
+            this.currentTime3 = new System.Windows.Forms.Label();
+            this.currentTime2 = new System.Windows.Forms.Label();
+            this.currentTime1 = new System.Windows.Forms.Label();
+            this.currentHumidityIMG = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // currentWeather
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(317, 195);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 55);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.currentWeather.AutoSize = true;
+            this.currentWeather.Font = new System.Drawing.Font("Georgia", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentWeather.ForeColor = System.Drawing.Color.White;
+            this.currentWeather.Location = new System.Drawing.Point(8, 102);
+            this.currentWeather.Name = "currentWeather";
+            this.currentWeather.Size = new System.Drawing.Size(147, 56);
+            this.currentWeather.TabIndex = 0;
+            this.currentWeather.Text = "label1";
+            this.currentWeather.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // currentForecast1
+            // 
+            this.currentForecast1.AutoSize = true;
+            this.currentForecast1.Font = new System.Drawing.Font("Georgia", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentForecast1.ForeColor = System.Drawing.Color.White;
+            this.currentForecast1.Location = new System.Drawing.Point(2, 282);
+            this.currentForecast1.Name = "currentForecast1";
+            this.currentForecast1.Size = new System.Drawing.Size(91, 32);
+            this.currentForecast1.TabIndex = 1;
+            this.currentForecast1.Text = "label2";
+            // 
+            // currentHumidity
+            // 
+            this.currentHumidity.AutoSize = true;
+            this.currentHumidity.Font = new System.Drawing.Font("Georgia", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentHumidity.ForeColor = System.Drawing.Color.White;
+            this.currentHumidity.Location = new System.Drawing.Point(103, 365);
+            this.currentHumidity.Name = "currentHumidity";
+            this.currentHumidity.Size = new System.Drawing.Size(152, 56);
+            this.currentHumidity.TabIndex = 2;
+            this.currentHumidity.Text = "label3";
+            // 
+            // currentRain
+            // 
+            this.currentRain.AutoSize = true;
+            this.currentRain.Font = new System.Drawing.Font("Georgia", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentRain.ForeColor = System.Drawing.Color.White;
+            this.currentRain.Location = new System.Drawing.Point(2, 435);
+            this.currentRain.Name = "currentRain";
+            this.currentRain.Size = new System.Drawing.Size(153, 56);
+            this.currentRain.TabIndex = 3;
+            this.currentRain.Text = "label4";
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Controls.Add(this.currentHumidityIMG);
+            this.panel1.Controls.Add(this.currentTime4);
+            this.panel1.Controls.Add(this.currentTime3);
+            this.panel1.Controls.Add(this.currentTime2);
+            this.panel1.Controls.Add(this.currentTime1);
+            this.panel1.Controls.Add(this.forecastWeather);
+            this.panel1.Controls.Add(this.location);
+            this.panel1.Controls.Add(this.currentLocation);
+            this.panel1.Controls.Add(this.currentSnow);
+            this.panel1.Controls.Add(this.currentImage);
+            this.panel1.Controls.Add(this.currentForecast4);
+            this.panel1.Controls.Add(this.currentForecast3);
+            this.panel1.Controls.Add(this.currentForecast2);
+            this.panel1.Controls.Add(this.currentRain);
+            this.panel1.Controls.Add(this.currentHumidity);
+            this.panel1.Controls.Add(this.currentForecast1);
+            this.panel1.Controls.Add(this.currentWeather);
             this.panel1.Location = new System.Drawing.Point(4, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(844, 454);
+            this.panel1.Size = new System.Drawing.Size(1894, 1032);
             this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // forecastWeather
+            // 
+            this.forecastWeather.AutoSize = true;
+            this.forecastWeather.Font = new System.Drawing.Font("Georgia", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forecastWeather.ForeColor = System.Drawing.Color.White;
+            this.forecastWeather.Location = new System.Drawing.Point(1431, 9);
+            this.forecastWeather.Name = "forecastWeather";
+            this.forecastWeather.Size = new System.Drawing.Size(451, 56);
+            this.forecastWeather.TabIndex = 11;
+            this.forecastWeather.Text = "Forecasted Weather";
+            this.forecastWeather.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.forecastWeather.Click += new System.EventHandler(this.forecastWeather_Click);
+            // 
+            // location
+            // 
+            this.location.AutoSize = true;
+            this.location.Font = new System.Drawing.Font("Georgia", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.location.ForeColor = System.Drawing.Color.White;
+            this.location.Location = new System.Drawing.Point(900, 9);
+            this.location.Name = "location";
+            this.location.Size = new System.Drawing.Size(147, 56);
+            this.location.TabIndex = 10;
+            this.location.Text = "label1";
+            // 
+            // currentLocation
+            // 
+            this.currentLocation.AutoSize = true;
+            this.currentLocation.Font = new System.Drawing.Font("Georgia", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentLocation.ForeColor = System.Drawing.Color.White;
+            this.currentLocation.Location = new System.Drawing.Point(13, 9);
+            this.currentLocation.Name = "currentLocation";
+            this.currentLocation.Size = new System.Drawing.Size(147, 56);
+            this.currentLocation.TabIndex = 9;
+            this.currentLocation.Text = "label1";
+            // 
+            // currentSnow
+            // 
+            this.currentSnow.AutoSize = true;
+            this.currentSnow.Font = new System.Drawing.Font("Georgia", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentSnow.ForeColor = System.Drawing.Color.White;
+            this.currentSnow.Location = new System.Drawing.Point(2, 491);
+            this.currentSnow.Name = "currentSnow";
+            this.currentSnow.Size = new System.Drawing.Size(153, 56);
+            this.currentSnow.TabIndex = 8;
+            this.currentSnow.Text = "label4";
+            // 
+            // currentImage
+            // 
+            this.currentImage.AutoSize = true;
+            this.currentImage.Font = new System.Drawing.Font("Georgia", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentImage.ForeColor = System.Drawing.Color.White;
+            this.currentImage.Location = new System.Drawing.Point(14, 192);
+            this.currentImage.Name = "currentImage";
+            this.currentImage.Size = new System.Drawing.Size(88, 51);
+            this.currentImage.TabIndex = 7;
+            this.currentImage.Text = "      ";
+            // 
+            // currentForecast4
+            // 
+            this.currentForecast4.AutoSize = true;
+            this.currentForecast4.Font = new System.Drawing.Font("Georgia", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentForecast4.ForeColor = System.Drawing.Color.White;
+            this.currentForecast4.Location = new System.Drawing.Point(231, 282);
+            this.currentForecast4.Name = "currentForecast4";
+            this.currentForecast4.Size = new System.Drawing.Size(75, 32);
+            this.currentForecast4.TabIndex = 6;
+            this.currentForecast4.Text = "label";
+            // 
+            // currentForecast3
+            // 
+            this.currentForecast3.AutoSize = true;
+            this.currentForecast3.Font = new System.Drawing.Font("Georgia", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentForecast3.ForeColor = System.Drawing.Color.White;
+            this.currentForecast3.Location = new System.Drawing.Point(154, 282);
+            this.currentForecast3.Name = "currentForecast3";
+            this.currentForecast3.Size = new System.Drawing.Size(91, 32);
+            this.currentForecast3.TabIndex = 5;
+            this.currentForecast3.Text = "label6";
+            // 
+            // currentForecast2
+            // 
+            this.currentForecast2.AutoSize = true;
+            this.currentForecast2.Font = new System.Drawing.Font("Georgia", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentForecast2.ForeColor = System.Drawing.Color.White;
+            this.currentForecast2.Location = new System.Drawing.Point(79, 282);
+            this.currentForecast2.Name = "currentForecast2";
+            this.currentForecast2.Size = new System.Drawing.Size(90, 32);
+            this.currentForecast2.TabIndex = 4;
+            this.currentForecast2.Text = "label5";
+            // 
+            // currentTime4
+            // 
+            this.currentTime4.AutoSize = true;
+            this.currentTime4.Font = new System.Drawing.Font("Georgia", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentTime4.ForeColor = System.Drawing.Color.White;
+            this.currentTime4.Location = new System.Drawing.Point(231, 318);
+            this.currentTime4.Name = "currentTime4";
+            this.currentTime4.Size = new System.Drawing.Size(75, 32);
+            this.currentTime4.TabIndex = 15;
+            this.currentTime4.Text = "label";
+            // 
+            // currentTime3
+            // 
+            this.currentTime3.AutoSize = true;
+            this.currentTime3.Font = new System.Drawing.Font("Georgia", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentTime3.ForeColor = System.Drawing.Color.White;
+            this.currentTime3.Location = new System.Drawing.Point(154, 318);
+            this.currentTime3.Name = "currentTime3";
+            this.currentTime3.Size = new System.Drawing.Size(91, 32);
+            this.currentTime3.TabIndex = 14;
+            this.currentTime3.Text = "label6";
+            // 
+            // currentTime2
+            // 
+            this.currentTime2.AutoSize = true;
+            this.currentTime2.Font = new System.Drawing.Font("Georgia", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentTime2.ForeColor = System.Drawing.Color.White;
+            this.currentTime2.Location = new System.Drawing.Point(79, 318);
+            this.currentTime2.Name = "currentTime2";
+            this.currentTime2.Size = new System.Drawing.Size(90, 32);
+            this.currentTime2.TabIndex = 13;
+            this.currentTime2.Text = "label5";
+            // 
+            // currentTime1
+            // 
+            this.currentTime1.AutoSize = true;
+            this.currentTime1.Font = new System.Drawing.Font("Georgia", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentTime1.ForeColor = System.Drawing.Color.White;
+            this.currentTime1.Location = new System.Drawing.Point(2, 318);
+            this.currentTime1.Name = "currentTime1";
+            this.currentTime1.Size = new System.Drawing.Size(91, 32);
+            this.currentTime1.TabIndex = 12;
+            this.currentTime1.Text = "label2";
+            // 
+            // currentHumidityIMG
+            // 
+            this.currentHumidityIMG.AutoSize = true;
+            this.currentHumidityIMG.Font = new System.Drawing.Font("Georgia", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentHumidityIMG.ForeColor = System.Drawing.Color.White;
+            this.currentHumidityIMG.Location = new System.Drawing.Point(9, 369);
+            this.currentHumidityIMG.Name = "currentHumidityIMG";
+            this.currentHumidityIMG.Size = new System.Drawing.Size(103, 60);
+            this.currentHumidityIMG.TabIndex = 16;
+            this.currentHumidityIMG.Text = "      ";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(848, 446);
+            this.ClientSize = new System.Drawing.Size(1898, 1024);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -75,8 +286,25 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label currentWeather;
+        private System.Windows.Forms.Label currentForecast1;
+        private System.Windows.Forms.Label currentHumidity;
+        private System.Windows.Forms.Label currentRain;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label currentImage;
+        private System.Windows.Forms.Label currentForecast4;
+        private System.Windows.Forms.Label currentForecast3;
+        private System.Windows.Forms.Label currentForecast2;
+        private System.Windows.Forms.Label currentSnow;
+        private System.Windows.Forms.Label currentLocation;
+        private System.Windows.Forms.Label forecastWeather;
+        private System.Windows.Forms.Label location;
+        private System.Windows.Forms.Label currentTime4;
+        private System.Windows.Forms.Label currentTime3;
+        private System.Windows.Forms.Label currentTime2;
+        private System.Windows.Forms.Label currentTime1;
+        private System.Windows.Forms.Label currentHumidityIMG;
+
     }
 }
 

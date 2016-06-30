@@ -69,6 +69,7 @@
     <Compile Include="Controller\weatherController.cs" />
     <Compile Include="Model\MMirrorManager.cs" />
     <Compile Include="Model\sports.cs" />
+    <Compile Include="Model\stocks.cs" />
     <Compile Include="Model\weatherDay.cs" />
     <Compile Include="View\Form1.cs">
       <SubType>Form</SubType>
@@ -93,7 +94,6 @@
     <None Include="Data\city.list.json" />
     <None Include="Data\jsWeatherDataCurrent.json" />
     <None Include="Data\jsWeatherDataForecast.json" />
-    <None Include="Data\stockInfo.csv" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -108,7 +108,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Data\stockInfo.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
