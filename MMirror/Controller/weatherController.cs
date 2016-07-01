@@ -17,9 +17,9 @@ namespace MMirror.Controller
     class weatherController
     {
         //urlCurrent gives current data gives 
-        String urlCurrent = "http://api.openweathermap.org/data/2.5/weather?id=5654320&appid=30b0e4a13dcb98a91143652520f8f108";
+        String urlCurrent = "http://api.openweathermap.org/data/2.5/weather?id=285787&appid=30b0e4a13dcb98a91143652520f8f108";
         //urlForecast gives future data in a long ass list
-        String urlForecast = "http://api.openweathermap.org/data/2.5/forecast?id=5654320&appid=30b0e4a13dcb98a91143652520f8f108";
+        String urlForecast = "http://api.openweathermap.org/data/2.5/forecast?id=285787&appid=30b0e4a13dcb98a91143652520f8f108";
 
         String mtlCode = "6077243";//Montreal's code for openweathermap
         string kuwaitCode = "285787";
@@ -110,27 +110,31 @@ namespace MMirror.Controller
             int count = 0;
             weatherDay[] fourDaylist = new weatherDay[32];
             int listCount = 0;
-            for (count = 0; count < 40; count++)
+            for (int i  = 0; i < 40; i++)
             {
-                DateTime dtToday = DateTime.Now.Date;
-                DateTime dtForecast = Convert.ToDateTime(weatherForecast.list[count].dt_txt).Date;
-                if (dtToday == dtForecast)
+                
+                string dtToday = DateTime.Now.Date.DayOfWeek.ToString();
+                string dtForecast = Convert.ToDateTime(weatherForecast.list[count].dt_txt).Date.DayOfWeek.ToString();
+                if (dtToday != dtForecast)
                 {
-                    break;
+                  break;
                 }
+                count = count + 1;
             }
+
+               
             for (listCount = 0; listCount < 32; listCount++)
             {
-                count++;
+                
                 weatherDay temp = new weatherDay();
                 temp.hi = weatherForecast.list[count].main.temp_max;
                 temp.lo = weatherForecast.list[count].main.temp_min;
                 temp.day = Convert.ToString(Convert.ToDateTime(weatherForecast.list[count].dt_txt).DayOfWeek);
                 temp.humidity = weatherForecast.list[count].main.humidity;
                 temp.location = weatherForecast.city.name;
-                temp.weatherConditions = weatherForecast.list[listCount].weather[0].icon;
+                temp.weatherConditions = weatherForecast.list[count].weather[0].icon;
                 fourDaylist[listCount] = temp;
-                
+                count++;
             }
             listCount = 0;
             weatherDay[] fourDayForecast = new weatherDay[4];
@@ -160,16 +164,12 @@ namespace MMirror.Controller
                     {
                         avgLo = fourDaylist[listCount].lo;
                     }                    
-                    //avgHi = avgHi + fourDaylist[listCount].hi;
-                    //avgLo = avgLo + fourDaylist[listCount].lo;
                     day = fourDaylist[listCount].day;
                     avgHumidity = avgHumidity + fourDaylist[listCount].humidity;
                     location = fourDaylist[listCount].location;
-                    icon = fourDaylist[i*8+4].weatherConditions;
+                    icon = fourDaylist[i*8+3].weatherConditions;
                     listCount++;
                 }
-               // avgHi = avgHi / 8;
-               // avgLo = avgLo / 8;
                 avgHumidity = avgHumidity / 8;
                 
                 weatherDay temp = new weatherDay();
@@ -187,11 +187,7 @@ namespace MMirror.Controller
             {
                 mmc.setWeather(i, fourDayForecast[i - 1]);
             }
-            // printing debugger :D   
-            string json = Newtonsoft.Json.JsonConvert.SerializeObject(fourDaylist);
-            File.WriteAllText(Path.Combine(Environment.CurrentDirectory, @"..\..\Data\", "tempArray.json"), json);
-            
-
+   
         }
       
         

@@ -24,11 +24,11 @@ namespace MMirror
             stockInfo si = new stockInfo();
             si.getStockFile();
            
-            Application.EnableVisualStyles();
+        /*    Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Form1 windows = new Form1();
             Application.Run(windows);
-
+          */  
         }
     }
 }

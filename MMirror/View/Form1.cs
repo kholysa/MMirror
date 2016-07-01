@@ -49,10 +49,16 @@ namespace MMirror
                     timesInt[i] = mmc.getWeather()[0].twelveHourTimes[i] - 12;
                     times[i] = Convert.ToString(timesInt[i]) + "p";
                 }
-                if (mmc.getWeather()[0].twelveHourTimes[i] == 12)
+                else if (mmc.getWeather()[0].twelveHourTimes[i] == 12)
                 {
                     timesInt[i] = mmc.getWeather()[0].twelveHourTimes[i];
                     times[i] = Convert.ToString(timesInt[i]) + "p";
+                }
+                else if (mmc.getWeather()[0].twelveHourTimes[i] == 0)
+                {
+                    timesInt[i] = mmc.getWeather()[0].twelveHourTimes[i]+12;
+                    times[i] = Convert.ToString(timesInt[i]) + "a";
+             
                 }
                 else
                 {

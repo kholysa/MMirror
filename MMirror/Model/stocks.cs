@@ -9,10 +9,10 @@ namespace MMirror.Model
     public class stocks
     {   
         public string stockName { get; set; }
-        public int closePrice { get; set; }
-        public int volume { get; set; }
-        public int avgVolume { get; set; }
-        public int volatility { get; set; }
+        public double closePrice { get; set; }
+        public double volume { get; set; }
+        public double avgVolume { get; set; }
+        public string volatility { get; set; }
         public stocks() 
         {
         }

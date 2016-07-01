@@ -469,9 +469,9 @@
             this.currentImage.ForeColor = System.Drawing.Color.White;
             this.currentImage.Location = new System.Drawing.Point(14, 192);
             this.currentImage.Name = "currentImage";
-            this.currentImage.Size = new System.Drawing.Size(88, 51);
+            this.currentImage.Size = new System.Drawing.Size(154, 51);
             this.currentImage.TabIndex = 7;
-            this.currentImage.Text = "      ";
+            this.currentImage.Text = "            ";
             // 
             // currentForecast4
             // 
