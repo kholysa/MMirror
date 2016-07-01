@@ -39,11 +39,11 @@ namespace MMirror.Controller
             WebClient n = new WebClient();
             String jsData = n.DownloadString(urlCurrent);
             jsData = jsData.Replace("3h", "h");
-            File.WriteAllText(Path.Combine(Environment.CurrentDirectory, @"..\..\Data\", "jsWeatherDataCurrent.json"), jsData);
+            File.WriteAllText(Path.Combine(Environment.CurrentDirectory, @"../../Data/", "jsWeatherDataCurrent.json"), jsData);
             
             jsData = n.DownloadString(urlForecast);
             jsData = jsData.Replace("3h", "h");
-            File.WriteAllText(Path.Combine(Environment.CurrentDirectory, @"..\..\Data\", "jsWeatherDataForecast.json"), jsData);
+            File.WriteAllText(Path.Combine(Environment.CurrentDirectory, @"../../Data/", "jsWeatherDataForecast.json"), jsData);
             
 
 
@@ -54,7 +54,7 @@ namespace MMirror.Controller
         {
             //this dynamic build an object whose attributes are decided on runtime (seems like a shady coding 
             //practice but idc c# is bae)
-            dynamic weatherCurrent = JObject.Parse(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, @"..\..\Data\", "jsWeatherDataCurrent.json")));
+            dynamic weatherCurrent = JObject.Parse(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, @"../../Data/", "jsWeatherDataCurrent.json")));
             
            
             //here we create the "current weather information" and populate it from the jsWeatherDataCurrent.json
@@ -67,7 +67,7 @@ namespace MMirror.Controller
             current.weatherConditions = weatherCurrent.weather[0].icon;
 
             //we will get the forecast data from the second URL
-            dynamic weatherForecast = JObject.Parse(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, @"..\..\Data\", "jsWeatherDataForecast.json")));
+            dynamic weatherForecast = JObject.Parse(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, @"../../Data/", "jsWeatherDataForecast.json")));
             int[] twelveHourForecast = new int[4];
             string[] twelveHourTimes = new string[4];
             for (int i = 0; i < twelveHourForecast.Length; i++)
@@ -106,7 +106,7 @@ namespace MMirror.Controller
             //initially, we will get the 32 data sets beginning at 12 midnight (tomorrow/tonight) i.e, we will have the 4 comprehensive day data set
             //this will be saved in fourDayList
 
-            dynamic weatherForecast = JObject.Parse(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, @"..\..\Data\", "jsWeatherDataForecast.json")));
+            dynamic weatherForecast = JObject.Parse(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, @"../../Data/", "jsWeatherDataForecast.json")));
             int count = 0;
             weatherDay[] fourDaylist = new weatherDay[32];
             int listCount = 0;

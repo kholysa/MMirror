@@ -26,14 +26,14 @@ namespace MMirror.Controller
             File.Delete(@"..\..\Data\stockInfo.csv");
             n.DownloadFile(URL, "stockInfo.csv");
             //place the new stockInfo in the data folder
-            File.Move("stockInfo.csv", @"..\..\Data\stockInfo.csv");
+            File.Move("stockInfo.csv", @"../../Data/stockInfo.csv");
 
 
             readStockInfo();
         }
         public void readStockInfo()
         {
-            string input = File.ReadAllText(@"..\..\Data\stockInfo.csv");
+            string input = File.ReadAllText(@"../../Data/stockInfo.csv");
             
            // var reader = new StreamReader(File.OpenRead(@"..\..\Data\stockInfo.txt"));
            // string[,] listA = new string[3,5];
@@ -85,58 +85,10 @@ namespace MMirror.Controller
 
             // printing debugger :D   
             string json = Newtonsoft.Json.JsonConvert.SerializeObject(mmc);
-            File.WriteAllText(Path.Combine(Environment.CurrentDirectory, @"..\..\Data\", "tempArray.json"), json);
+            File.WriteAllText(Path.Combine(Environment.CurrentDirectory, @"../../Data/", "tempArray.json"), json);
                 
 
-           // var line = reader.ReadToEnd();
-          //  var values = line.Split(',');
-
-            
-                   
-           /* for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < 5; j++)
-                {
-                    
-                 //   listA[i, j] = values[j];
-                    debugger += "" + listA[i, j] + ",";
-                }
-                debugger += "\n";
-            }
-            listA   = File.ReadLines(@"..\..\Data\stockInfo.txt").Select(s => s.Split(',')).ToArray();
-            String input = File.ReadAllText(@"..\..\Data\stockInfo.txt");
-
-            int i = 0, j = 0;
-            string[,] result = new string[3, 5];
-            foreach (var row in input.Split('\n'))
-            {
-                j = 0;
-                foreach (var col in row.Trim().Split(','))
-                {
-                    result[i, j] = string.Parse(col.Trim());
-                    j++;
-                }
-                i++;
-            }
-
-            File.WriteAllText(Path.Combine(Environment.CurrentDirectory, @"..\..\Data\", "tempArray.json"), result[0,1]);
-
-
-            // printing debugger :D   
-            //string json = Newtonsoft.Json.JsonConvert.SerializeObject(this.mmc);
-            File.WriteAllText(Path.Combine(Environment.CurrentDirectory, @"..\..\Data\", "tempArray.json"), debugger);
-            while (!reader.EndOfStream)
-            {
-                int counter = 0;
-                var line = reader.ReadLine();
-                string[] values = line.Split(',');
-                while (counter < 5)
-                {
-                    ListA[counter] = values[counter];
-                }
-
-
-            }*/
+    
 
         }
     }

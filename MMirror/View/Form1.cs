@@ -15,7 +15,7 @@ namespace MMirror
    
     public partial class Form1 : Form
     {
-       // public MMirrorManager mmc { get; set; }
+
         public Form1()
         {
 
@@ -72,7 +72,7 @@ namespace MMirror
             currentTime4.Text = Convert.ToString(times[3]) ;
 
             //the image of the humidity
-            Image humidity = Image.FromFile(@"..\..\Data\humidity.png");
+            Image humidity = Image.FromFile(@"../../Data/humidity.png");
             currentHumidityIMG.Size = new Size(humidity.Width, humidity.Height);
             currentHumidityIMG.Image = humidity;
 
@@ -83,7 +83,7 @@ namespace MMirror
             forecastWeather.Text = "Weather Forecast";
             
             //image of current weather
-            Image img = Image.FromFile(@"..\..\Data\" + mmc.getWeather()[0].weatherConditions+".png");
+            Image img = Image.FromFile(@"../../Data/" + mmc.getWeather()[0].weatherConditions+".png");
             currentImage.Size = new Size(img.Width, img.Height);
             currentImage.Image = img;
 
@@ -94,9 +94,9 @@ namespace MMirror
             }
             else
             {
-                Image rain = Image.FromFile(@"..\..\Data\rain.png");
+                Image rain = Image.FromFile(@"../../Data/rain.png");
                 rainIMG.Size = new Size(50,50);
-                rainIMG.Image = img;
+                rainIMG.Image = rain;
                 currentRain.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[0].rain) + "cm");
          
             }
@@ -106,9 +106,9 @@ namespace MMirror
             }
             else
             {
-                Image snow = Image.FromFile(@"..\..\Data\snow.png");
+                Image snow = Image.FromFile(@"../../Data/snow.png");
                 snowIMG.Size = new Size(50, 50);
-                snowIMG.Image = img;
+                snowIMG.Image = snow;
                 
                 currentSnow.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[0].snow) + "cm");
             }
@@ -129,10 +129,10 @@ namespace MMirror
             forecastIMG3.Size = new System.Drawing.Size(50, 50);
             forecastIMG4.Size = new System.Drawing.Size(50, 50);
 
-            forecastIMG1.Image = Image.FromFile(@"..\..\Data\" + mmc.getWeather()[1].weatherConditions + ".png");
-            forecastIMG2.Image = Image.FromFile(@"..\..\Data\" + mmc.getWeather()[2].weatherConditions + ".png");
-            forecastIMG3.Image = Image.FromFile(@"..\..\Data\" + mmc.getWeather()[3].weatherConditions + ".png");
-            forecastIMG4.Image = Image.FromFile(@"..\..\Data\" + mmc.getWeather()[4].weatherConditions + ".png");
+            forecastIMG1.Image = Image.FromFile(@"../../Data/" + mmc.getWeather()[1].weatherConditions + ".png");
+            forecastIMG2.Image = Image.FromFile(@"../../Data/" + mmc.getWeather()[2].weatherConditions + ".png");
+            forecastIMG3.Image = Image.FromFile(@"../../Data/" + mmc.getWeather()[3].weatherConditions + ".png");
+            forecastIMG4.Image = Image.FromFile(@"../../Data/" + mmc.getWeather()[4].weatherConditions + ".png");
             //the days of the weather forecast
             DateTime dt = DateTime.Now;
             Tomorrow.Text = Convert.ToString(dt.AddDays(1).DayOfWeek);
