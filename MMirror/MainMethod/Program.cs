@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Net;
 using MMirror.Controller;
 using MMirror.Model;
+using MMirror.View;
 
 namespace MMirror
 {
@@ -24,10 +25,12 @@ namespace MMirror
             stockInfo si = new stockInfo();
             si.getStockFile();
            
+    
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Form1 windows = new Form1();
-            Application.Run(windows);
+            stockView stocks = new stockView();
+            Application.Run(stocks);
             
         }
     }

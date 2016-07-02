@@ -35,9 +35,6 @@ namespace MMirror.Controller
         {
             string input = File.ReadAllText(@"../../Data/stockInfo.csv");
             
-           // var reader = new StreamReader(File.OpenRead(@"..\..\Data\stockInfo.txt"));
-           // string[,] listA = new string[3,5];
-          //  string debugger = "";
             int i = 0, j = 0;
             string[,] result = new string[5, 5];
             foreach (var row in input.Split('\n'))
@@ -51,6 +48,8 @@ namespace MMirror.Controller
                 i++;
             }
             MMirrorManager mmc = MMirrorManager.instance;
+            //creating temp stock instance, populate with data from array
+            //watch out for N/A
             for (i = 0; i < result.GetLength(0)-1; i++)
             {
                 
@@ -59,26 +58,34 @@ namespace MMirror.Controller
                 if (result[i, 1] == "N/A")
                 {
                     temp.closePrice = mmc.getStock(i).closePrice;
-                }
-                temp.closePrice = Convert.ToDouble(result[i, 1]);
+                }else
+                    temp.closePrice = Convert.ToDouble(result[i, 1]);
+                
                 if (result[i, 2] == "N/A")
                 {
                     temp.volume = mmc.getStock(i).volume;
-                }
-                temp.volume = Convert.ToDouble(result[i, 2]);
+                }else
+                    temp.volume = Convert.ToDouble(result[i, 2]);
 
                 if (result[i, 1] == "N/A")
                 {
                     temp.avgVolume = mmc.getStock(i).avgVolume;
-                }
-                temp.avgVolume = Convert.ToDouble(result[i, 3]);
+                }else
+                    temp.avgVolume = Convert.ToDouble(result[i, 3]);
 
                 if (result[i, 1] == "N/A")
                 {
                     temp.volatility = mmc.getStock(i).volatility;
                 }
-                temp.volatility = result[i, 4];
-                
+                else
+                {
+                    result[i, 4] = result[i, 4].Replace(" -", " ,");
+                    result[i, 4] = result[i, 4].Replace(" , ,", " , -");
+                    result[i, 4] = result[i, 4].Replace("\"", "");
+
+
+                    temp.volatility = result[i, 4];
+                }
                 mmc.setStock(i, temp);
                 
             }

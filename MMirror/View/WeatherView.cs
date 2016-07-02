@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MMirror.Model;
 using MMirror.Controller;
-
+using MMirror.View;
 namespace MMirror
 {
    
@@ -23,7 +23,12 @@ namespace MMirror
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
         }
-
+        private void onClicked(object sender, EventArgs e)
+        {
+            stockView stock = new stockView();
+            stock.Show();
+            this.Hide();
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             MMirrorManager mmc = MMirrorManager.Instance;

@@ -33,6 +33,14 @@
             this.currentHumidity = new System.Windows.Forms.Label();
             this.currentRain = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.currentImage = new System.Windows.Forms.PictureBox();
+            this.forecastIMG4 = new System.Windows.Forms.PictureBox();
+            this.forecastIMG3 = new System.Windows.Forms.PictureBox();
+            this.forecastIMG2 = new System.Windows.Forms.PictureBox();
+            this.forecastIMG1 = new System.Windows.Forms.PictureBox();
+            this.snowIMG = new System.Windows.Forms.PictureBox();
+            this.rainIMG = new System.Windows.Forms.PictureBox();
+            this.currentHumidityIMG = new System.Windows.Forms.PictureBox();
             this.Tomorrow = new System.Windows.Forms.Label();
             this.tomorrow2 = new System.Windows.Forms.Label();
             this.tomorrow3 = new System.Windows.Forms.Label();
@@ -56,23 +64,15 @@
             this.currentForecast4 = new System.Windows.Forms.Label();
             this.currentForecast3 = new System.Windows.Forms.Label();
             this.currentForecast2 = new System.Windows.Forms.Label();
-            this.currentHumidityIMG = new System.Windows.Forms.PictureBox();
-            this.rainIMG = new System.Windows.Forms.PictureBox();
-            this.snowIMG = new System.Windows.Forms.PictureBox();
-            this.forecastIMG1 = new System.Windows.Forms.PictureBox();
-            this.forecastIMG2 = new System.Windows.Forms.PictureBox();
-            this.forecastIMG3 = new System.Windows.Forms.PictureBox();
-            this.forecastIMG4 = new System.Windows.Forms.PictureBox();
-            this.currentImage = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.currentHumidityIMG)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rainIMG)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.snowIMG)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.forecastIMG1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.forecastIMG2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.forecastIMG3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.forecastIMG4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.forecastIMG4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.forecastIMG3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.forecastIMG2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.forecastIMG1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.snowIMG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rainIMG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.currentHumidityIMG)).BeginInit();
             this.SuspendLayout();
             // 
             // currentWeather
@@ -165,7 +165,72 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1894, 1032);
             this.panel1.TabIndex = 1;
+            this.panel1.Click += new System.EventHandler(this.onClicked);
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // currentImage
+            // 
+            this.currentImage.Location = new System.Drawing.Point(23, 177);
+            this.currentImage.Name = "currentImage";
+            this.currentImage.Size = new System.Drawing.Size(50, 50);
+            this.currentImage.TabIndex = 40;
+            this.currentImage.TabStop = false;
+            // 
+            // forecastIMG4
+            // 
+            this.forecastIMG4.Location = new System.Drawing.Point(1605, 435);
+            this.forecastIMG4.Name = "forecastIMG4";
+            this.forecastIMG4.Size = new System.Drawing.Size(50, 50);
+            this.forecastIMG4.TabIndex = 39;
+            this.forecastIMG4.TabStop = false;
+            // 
+            // forecastIMG3
+            // 
+            this.forecastIMG3.Location = new System.Drawing.Point(1605, 318);
+            this.forecastIMG3.Name = "forecastIMG3";
+            this.forecastIMG3.Size = new System.Drawing.Size(50, 50);
+            this.forecastIMG3.TabIndex = 38;
+            this.forecastIMG3.TabStop = false;
+            // 
+            // forecastIMG2
+            // 
+            this.forecastIMG2.Location = new System.Drawing.Point(1605, 214);
+            this.forecastIMG2.Name = "forecastIMG2";
+            this.forecastIMG2.Size = new System.Drawing.Size(50, 50);
+            this.forecastIMG2.TabIndex = 37;
+            this.forecastIMG2.TabStop = false;
+            // 
+            // forecastIMG1
+            // 
+            this.forecastIMG1.Location = new System.Drawing.Point(1605, 108);
+            this.forecastIMG1.Name = "forecastIMG1";
+            this.forecastIMG1.Size = new System.Drawing.Size(50, 50);
+            this.forecastIMG1.TabIndex = 36;
+            this.forecastIMG1.TabStop = false;
+            // 
+            // snowIMG
+            // 
+            this.snowIMG.Location = new System.Drawing.Point(8, 514);
+            this.snowIMG.Name = "snowIMG";
+            this.snowIMG.Size = new System.Drawing.Size(50, 50);
+            this.snowIMG.TabIndex = 35;
+            this.snowIMG.TabStop = false;
+            // 
+            // rainIMG
+            // 
+            this.rainIMG.Location = new System.Drawing.Point(8, 445);
+            this.rainIMG.Name = "rainIMG";
+            this.rainIMG.Size = new System.Drawing.Size(50, 50);
+            this.rainIMG.TabIndex = 34;
+            this.rainIMG.TabStop = false;
+            // 
+            // currentHumidityIMG
+            // 
+            this.currentHumidityIMG.Location = new System.Drawing.Point(9, 361);
+            this.currentHumidityIMG.Name = "currentHumidityIMG";
+            this.currentHumidityIMG.Size = new System.Drawing.Size(50, 70);
+            this.currentHumidityIMG.TabIndex = 33;
+            this.currentHumidityIMG.TabStop = false;
             // 
             // Tomorrow
             // 
@@ -422,70 +487,6 @@
             this.currentForecast2.TabIndex = 4;
             this.currentForecast2.Text = "label5";
             // 
-            // currentHumidityIMG
-            // 
-            this.currentHumidityIMG.Location = new System.Drawing.Point(9, 361);
-            this.currentHumidityIMG.Name = "currentHumidityIMG";
-            this.currentHumidityIMG.Size = new System.Drawing.Size(50, 70);
-            this.currentHumidityIMG.TabIndex = 33;
-            this.currentHumidityIMG.TabStop = false;
-            // 
-            // rainIMG
-            // 
-            this.rainIMG.Location = new System.Drawing.Point(8, 445);
-            this.rainIMG.Name = "rainIMG";
-            this.rainIMG.Size = new System.Drawing.Size(50, 50);
-            this.rainIMG.TabIndex = 34;
-            this.rainIMG.TabStop = false;
-            // 
-            // snowIMG
-            // 
-            this.snowIMG.Location = new System.Drawing.Point(8, 514);
-            this.snowIMG.Name = "snowIMG";
-            this.snowIMG.Size = new System.Drawing.Size(50, 50);
-            this.snowIMG.TabIndex = 35;
-            this.snowIMG.TabStop = false;
-            // 
-            // forecastIMG1
-            // 
-            this.forecastIMG1.Location = new System.Drawing.Point(1605, 108);
-            this.forecastIMG1.Name = "forecastIMG1";
-            this.forecastIMG1.Size = new System.Drawing.Size(50, 50);
-            this.forecastIMG1.TabIndex = 36;
-            this.forecastIMG1.TabStop = false;
-            // 
-            // forecastIMG2
-            // 
-            this.forecastIMG2.Location = new System.Drawing.Point(1605, 214);
-            this.forecastIMG2.Name = "forecastIMG2";
-            this.forecastIMG2.Size = new System.Drawing.Size(50, 50);
-            this.forecastIMG2.TabIndex = 37;
-            this.forecastIMG2.TabStop = false;
-            // 
-            // forecastIMG3
-            // 
-            this.forecastIMG3.Location = new System.Drawing.Point(1605, 318);
-            this.forecastIMG3.Name = "forecastIMG3";
-            this.forecastIMG3.Size = new System.Drawing.Size(50, 50);
-            this.forecastIMG3.TabIndex = 38;
-            this.forecastIMG3.TabStop = false;
-            // 
-            // forecastIMG4
-            // 
-            this.forecastIMG4.Location = new System.Drawing.Point(1605, 435);
-            this.forecastIMG4.Name = "forecastIMG4";
-            this.forecastIMG4.Size = new System.Drawing.Size(50, 50);
-            this.forecastIMG4.TabIndex = 39;
-            this.forecastIMG4.TabStop = false;
-            // 
-            // currentImage
-            // 
-            this.currentImage.Location = new System.Drawing.Point(23, 177);
-            this.currentImage.Name = "currentImage";
-            this.currentImage.Size = new System.Drawing.Size(50, 50);
-            this.currentImage.TabIndex = 40;
-            this.currentImage.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -498,14 +499,14 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.currentHumidityIMG)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rainIMG)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.snowIMG)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.forecastIMG1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.forecastIMG2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.forecastIMG3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.forecastIMG4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.forecastIMG4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.forecastIMG3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.forecastIMG2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.forecastIMG1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.snowIMG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rainIMG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.currentHumidityIMG)).EndInit();
             this.ResumeLayout(false);
 
         }
