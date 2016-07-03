@@ -17,12 +17,13 @@ namespace MMirror.Controller
     class weatherController
     {
         //urlCurrent gives current data gives 
-        String urlCurrent = "http://api.openweathermap.org/data/2.5/weather?id=285787&appid=30b0e4a13dcb98a91143652520f8f108";
+        String urlCurrent = "http://api.openweathermap.org/data/2.5/weather?id=2643743&appid=30b0e4a13dcb98a91143652520f8f108";
         //urlForecast gives future data in a long ass list
-        String urlForecast = "http://api.openweathermap.org/data/2.5/forecast?id=285787&appid=30b0e4a13dcb98a91143652520f8f108";
+        String urlForecast = "http://api.openweathermap.org/data/2.5/forecast?id=2643743&appid=30b0e4a13dcb98a91143652520f8f108";
 
         String mtlCode = "6077243";//Montreal's code for openweathermap
         string kuwaitCode = "285787";
+        string ldnCode = "2643743";
         string glasgowCode = "5654320";
         String API = "&APPID=30b0e4a13dcb98a91143652520f8f108"; //my personal api
 
@@ -84,11 +85,11 @@ namespace MMirror.Controller
             //not every API reply will have a rain parameter
             try{
 
-                current.rain = weatherForecast.list[1].rain.h;
+                current.rain = weatherForecast.list[0].rain.h;
             }
             catch (Exception){ }
              try{
-                current.snow = weatherForecast.list[1].snow.h;
+                current.snow = weatherForecast.list[0].snow.h;
             }
             catch (Exception){ }
             
@@ -127,7 +128,14 @@ namespace MMirror.Controller
             {
                 
                 weatherDay temp = new weatherDay();
-                temp.hi = weatherForecast.list[count].main.temp_max;
+                try
+                {
+                    temp.hi = weatherForecast.list[count].main.temp_max;
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    return;
+                }
                 temp.lo = weatherForecast.list[count].main.temp_min;
                 temp.day = Convert.ToString(Convert.ToDateTime(weatherForecast.list[count].dt_txt).DayOfWeek);
                 temp.humidity = weatherForecast.list[count].main.humidity;

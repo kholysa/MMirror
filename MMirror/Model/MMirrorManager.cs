@@ -10,9 +10,9 @@ namespace MMirror.Model
     {
         public static MMirrorManager instance = null;
         public static readonly object padlock = new object();
-        public List<weatherDay> weather = new List<weatherDay>(5);
+        public List<weatherDay> weather = new List<weatherDay> { null, null, null,null,null };
         public sports sport = new sports();
-        public List<stocks> stock = new List<stocks>();
+        public List<stocks> stock = new List<stocks>{null,null,null,null};
 
         private MMirrorManager() { }
 
@@ -25,6 +25,7 @@ namespace MMirror.Model
                     if (instance == null)
                     {
                         instance = new MMirrorManager();
+
                     }
                     return instance;
                 }
@@ -49,7 +50,7 @@ namespace MMirror.Model
         }
         public void setWeather(int i, weatherDay weatherInput)
         {
-            this.weather.Insert(i,weatherInput);
+            this.weather[i] = weatherInput;
         }
         public List<stocks> getStocks()
         {
@@ -63,9 +64,9 @@ namespace MMirror.Model
         {
             this.stock = input;
         }
-        public void setStock(int i, stocks stock)
+        public void setStock(int i, stocks stockInput)
         {
-            this.stock.Insert(i, stock);
+            this.stock[i]= stockInput;
         }
     }
 

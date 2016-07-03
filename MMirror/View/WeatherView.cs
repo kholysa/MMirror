@@ -102,7 +102,7 @@ namespace MMirror
                 Image rain = Image.FromFile(@"../../Data/rain.png");
                 rainIMG.Size = new Size(50,50);
                 rainIMG.Image = rain;
-                currentRain.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[0].rain) + "cm");
+                currentRain.Text = Convert.ToString(Convert.ToDouble(mmc.getWeather()[0].rain) + "mm");
          
             }
             if (mmc.getWeather()[0].snow == -50)
@@ -119,15 +119,15 @@ namespace MMirror
             }
 
             //the highs of the next few days
-            forecastTemp1.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[1].hi - 273.15) + "°C");
-            forecastTemp2.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[2].hi - 273.15) + "°C");
-            forecastTemp3.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[3].hi - 273.15) + "°C");
-            forecastTemp4.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[4].hi - 273.15) + "°C");
+            forecastTemp1.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[1].hi - 273.15) + "°");
+            forecastTemp2.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[2].hi - 273.15) + "°");
+            forecastTemp3.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[3].hi - 273.15) + "°");
+            forecastTemp4.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[4].hi - 273.15) + "°");
             //the los of the next 4 days
-            forecastLo1.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[1].lo - 273.15) + "°C");
-            forecastLo2.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[2].lo - 273.15) + "°C");
-            forecastLo3.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[3].lo - 273.15) + "°C");
-            forecastLo4.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[4].lo - 273.15) + "°C");
+            forecastLo1.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[1].lo - 273.15) + "°");
+            forecastLo2.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[2].lo - 273.15) + "°");
+            forecastLo3.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[3].lo - 273.15) + "°");
+            forecastLo4.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[4].lo - 273.15) + "°");
             //the image of the next few days
             forecastIMG1.Size = new System.Drawing.Size(50, 50);
             forecastIMG2.Size = new System.Drawing.Size(50, 50);
