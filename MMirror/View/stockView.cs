@@ -8,17 +8,32 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MMirror.Model;
+using Raspberry.IO.GeneralPurpose;
 
 namespace MMirror.View
 {
     public partial class stockView : Form
     {
+        int edges = 0;
         public stockView()
         {
+            InputPinConfiguration p = new InputPinConfiguration(ConnectorPin.P1Pin07.ToProcessor());
+            GpioConnection g = new GpioConnection(p);
+            g.PinStatusChanged += g_Detected;
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
+
        
+        }
+        public void g_Detected(object sender, PinStatusEventArgs e)
+        {
+            edges++;
+            if (edges == 1)
+            {
+                this.Close();
+                edges = 0;
+            }
         }
 
         private void stockView_Load(object sender, EventArgs e)

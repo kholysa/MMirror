@@ -18,6 +18,7 @@ namespace MMirror
         static int edges =0;
         static stockView stockView;
         static Form1 weatherView;
+        static int state = 0;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -49,16 +50,7 @@ namespace MMirror
             stockInfo si = new stockInfo();
             si.getStockFile();
   
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            stockView = new stockView();
-            Application.Run(stockView);
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            weatherView = new Form1();
-            Application.Run(weatherView);
-            weatherView.Visible = false;
+ 
            
 
             InputPinConfiguration p = new InputPinConfiguration(ConnectorPin.P1Pin07.ToProcessor());
@@ -69,23 +61,22 @@ namespace MMirror
         static void g_detected(object sender,PinStatusEventArgs e)
         {
             edges++;
-            switch(edges)
+            if (edges == 2 && state == 0)
             {
-                case 1:
-                    break;
-                case 2:
-                    edges = 0;
-                    if (weatherView.Visible)
-                    {
-                        weatherView.Visible = false;
-                        stockView.Visible = true;
-                    }
-                    else if (!weatherView.Visible)
-                    {
-                        weatherView.Visible = true;
-                        stockView.Visible = false;
-                    }
-                    break;
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                stockView = new stockView();
+                edges = 0;
+                state = 1;
+                Application.Run(stockView);
+            }
+            else if (edges == 2 && state == 1)
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                weatherView = new Form1();
+                weatherView.Visible = true;
+                Application.Run(weatherView);
             }
         }
 

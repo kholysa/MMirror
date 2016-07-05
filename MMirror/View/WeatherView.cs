@@ -10,18 +10,34 @@ using System.Windows.Forms;
 using MMirror.Model;
 using MMirror.Controller;
 using MMirror.View;
+using Raspberry.IO.GeneralPurpose;
+
+
 namespace MMirror
 {
    
     public partial class Form1 : Form
     {
+        int edges = 0;
 
         public Form1()
         {
+            InputPinConfiguration p = new InputPinConfiguration(ConnectorPin.P1Pin07.ToProcessor());
+            GpioConnection g = new GpioConnection(p);
+            g.PinStatusChanged += g_Detected;
 
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
+        }
+        public void g_Detected(object sender, PinStatusEventArgs e)
+        {
+            edges++;
+            if (edges == 1)
+            {
+                this.Close();
+                edges = 0;
+            }
         }
         private void onClicked(object sender, EventArgs e)
         {
