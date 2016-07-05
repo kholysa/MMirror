@@ -23,7 +23,7 @@ namespace MMirror.Controller
             String URL = "http://download.finance.yahoo.com/d/quotes.csv?s=YHOO+GOOG+MSFT+AAPL&f=spva2c";
             WebClient n = new WebClient();
             //dleete the old file
-            File.Delete(@"..\..\Data\stockInfo.csv");
+            File.Delete(@"../../Data/stockInfo.csv");
             n.DownloadFile(URL, "stockInfo.csv");
             //place the new stockInfo in the data folder
             File.Move("stockInfo.csv", @"../../Data/stockInfo.csv");

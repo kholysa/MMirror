@@ -93,7 +93,7 @@ namespace MMirror
             currentTime4.Text = Convert.ToString(times[3]) ;
 
             //the image of the humidity
-            Image humidity = Image.FromFile(@"../../Data/humidity.png");
+            Image humidity = Image.FromFile(@"../../Data/50d.png");
             currentHumidityIMG.Size = new Size(humidity.Width, humidity.Height);
             currentHumidityIMG.Image = humidity;
 

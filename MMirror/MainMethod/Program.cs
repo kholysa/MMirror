@@ -75,6 +75,8 @@ namespace MMirror
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 weatherView = new Form1();
+                edges = 0;
+                state = 0;
                 weatherView.Visible = true;
                 Application.Run(weatherView);
             }
