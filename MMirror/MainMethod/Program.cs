@@ -17,7 +17,7 @@ namespace MMirror
     {
         static int edges =0;
         static stockView stockView;
-        static Form1 weatherView;
+        static WeatherView weatherView;
         static int state = 0;
         /// <summary>
         /// The main entry point for the application.
@@ -39,24 +39,34 @@ namespace MMirror
 
                 mm.setStock(stock);
                 mm.setWeather(weather);
+
             }
             catch (Exception)
             {
+                stockController si = new stockController();
+                si.getStockFile();
+
+                weatherController wc = new weatherController(MMirrorManager.instance);
+                wc.getWeatherJSON();
             }
             
-            weatherController wc = new weatherController(mm);
-            wc.getWeatherJSON();
+
            
-            stockInfo si = new stockInfo();
-            si.getStockFile();
-  
+        
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            stockView = new stockView();
+            edges = 0;
+            state = 0;
+            stockView.Visible = true;              
+            Application.Run(stockView);  
  
            
 
-            InputPinConfiguration p = new InputPinConfiguration(ConnectorPin.P1Pin07.ToProcessor());
+            /*InputPinConfiguration p = new InputPinConfiguration(ConnectorPin.P1Pin07.ToProcessor());
             GpioConnection g = new GpioConnection (p);
             g.PinStatusChanged += g_detected;
-  
+  */
         }
         static void g_detected(object sender,PinStatusEventArgs e)
         {
@@ -74,14 +84,12 @@ namespace MMirror
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                weatherView = new Form1();
+                weatherView = new WeatherView();
                 edges = 0;
                 state = 0;
                 weatherView.Visible = true;
                 Application.Run(weatherView);
             }
         }
-
-        
     }
 }

@@ -6,51 +6,93 @@ using System.Threading.Tasks;
 using System.Net;
 using System.IO;
 using MMirror.Model;
+using System.ComponentModel;
 
 namespace MMirror.Controller
 {
-    class stockInfo
+    class stockController
     {
-        public stockInfo(){}
+        string data;
+        public stockController(){}
         public void getStockFile()
         {
+            ReadSettings rs = new ReadSettings();
+           
             //download the csv file and save it in the DATA folder
             //s = symbol
             //p = previous close
             //v = volume
             //a2 = avg daily volume
             //c = change and percent change
-            String URL = "http://download.finance.yahoo.com/d/quotes.csv?s=YHOO+GOOG+MSFT+AAPL&f=spva2c";
+            Settings smo = Settings.instance;
+            List<String> stockList = smo.stocks;
+            String URL = "http://download.finance.yahoo.com/d/quotes.csv?s=YHOO+GOOG+MSFT+TSLA&f=spva2c";
+            String URLModular = "http://download.finance.yahoo.com/d/quotes.csv?s=";
+            String attributes = "&f=spva2c";
+ 
+            for (int i = 0; i < stockList.Count; i++)
+            {
+                URLModular = URLModular + "+" + stockList[i];
+            }
+            URLModular = URLModular + attributes;
             WebClient n = new WebClient();
+            n.DownloadStringCompleted+=new DownloadStringCompletedEventHandler(getNData);
             //dleete the old file
-            File.Delete(@"../../Data/stockInfo.csv");
-            n.DownloadFile(URL, "stockInfo.csv");
+            try
+            {
+                n.DownloadStringAsync(new Uri(URLModular), data);
+            }
+            catch (WebException e)
+            {
+                throw e;
+            }
             //place the new stockInfo in the data folder
-            File.Move("stockInfo.csv", @"../../Data/stockInfo.csv");
+            
 
 
+        }
+        private void getNData(Object sender, DownloadStringCompletedEventArgs e)
+        {
+            data = e.Result;
+            File.WriteAllText(@"../../Data/stockInfo.csv", data);
             readStockInfo();
         }
         public void readStockInfo()
         {
-            string input = File.ReadAllText(@"../../Data/stockInfo.csv");
+            Settings smo = Settings.instance;
+            List<String> stockList = smo.stocks;
+            string input = data;
+            //string input = File.ReadAllText(@"../../Data/stockInfo.csv");
             
             int i = 0, j = 0;
-            string[,] result = new string[5, 5];
-            foreach (var row in input.Split('\n'))
+            string[,] result = new string[stockList.Count, 5];
+            try
             {
-                j = 0;
-                foreach (var col in row.Trim().Split(','))
+                foreach (var row in input.Split('\n'))
                 {
-                    result[i, j] = col.Trim();
-                    j++;
+                    j = 0;
+                    foreach (var col in row.Trim().Split(','))
+                    {
+                        result[i, j] = col.Trim();
+                        j++;
+                    }
+                    i++;
+                    if (i == stockList.Count)
+                        break;
                 }
-                i++;
+            }
+            catch (NullReferenceException e)
+            {
+                return;
             }
             MMirrorManager mmc = MMirrorManager.instance;
+           
             //creating temp stock instance, populate with data from array
             //watch out for N/A
-            for (i = 0; i < result.GetLength(0)-1; i++)
+
+          
+
+            for (i = 0; i < stockList.Count; i++)
             {
                 
                 stocks temp = new stocks();
@@ -87,14 +129,13 @@ namespace MMirror.Controller
                     temp.volatility = result[i, 4];
                 }
                 mmc.setStock(i, temp);
-                
-            }
+             
+          }
 
             // printing debugger :D   
             string json = Newtonsoft.Json.JsonConvert.SerializeObject(mmc);
             File.WriteAllText(Path.Combine(Environment.CurrentDirectory, @"../../Data/", "tempArray.json"), json);
-                
-
+           
     
 
         }

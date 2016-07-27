@@ -12,7 +12,7 @@ namespace MMirror.Model
         public static readonly object padlock = new object();
         public List<weatherDay> weather = new List<weatherDay> { null, null, null,null,null };
         public sports sport = new sports();
-        public List<stocks> stock = new List<stocks>{null,null,null,null};
+        public List<stocks> stock = new List<stocks>();
 
         private MMirrorManager() { }
 
@@ -66,62 +66,25 @@ namespace MMirror.Model
         }
         public void setStock(int i, stocks stockInput)
         {
-            this.stock[i]= stockInput;
+          
+            this.stock.Add(stockInput);
+            try
+            {
+                for (int j = 0; j < stock.Count; j++)
+                {
+                    for (int k = j + 1; k < stock.Count; k++)
+                    {
+                        if (stock[j].stockName.Equals(stock[k].stockName))
+                        {
+                            stock.RemoveAt(j);
+                            k--;
+                        }
+                    }
+                }
+            }
+            catch (Exception e){ }
         }
     }
 
-   /* class MMirrorManager
-    {
-        public List<weatherDay> weather = new List<weatherDay>(5); 
-        public sports sport = new sports();
-        bool isInitialised = false;
-        static MMirrorManager()
-        {
-        }
-        public MMirrorManager getInstance(){
-            return this;
-        }
-       
-        public sports getSports()
-        {
-            return sport;
-        }
 
-        public void setSports(sports sp){
-            this.sport = sp;
-        }
-        public List<weatherDay> getWeather()
-        {
-            return this.weather;
-        }
-        public void setWeather(List<weatherDay> input)
-        {
-            this.weather = input;
-        }
-        public void setWeather(int i,weatherDay weatherInput)
-        {
-            this.weather[i] = weatherInput;
-        }
-            //store that we did create this upon startup 
-          //  isInitialised = true;
-            //filling the list with a blank weatherDay to allow for modification in the 5 day forcast
-          //  weather = new List<weatherDay>(5);
-     /*       for (int i = 0; i < 5; i++)
-            {
-                weather.Add(new weatherDay());
-            }
-            
-           sport = new List<sports>(1);
-           sport.Add(new sports());
-        }
-        public void modifyWeather(int day, weatherDay newWeather){
-            weather.RemoveAt(day);
-            weather.Insert(day, newWeather);
-        }
-        public void modifySport(sports newSport)
-        {
-            sport.RemoveAt(0);
-            sport.Add(newSport);
-        }
-    }*/
 }

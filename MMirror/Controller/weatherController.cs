@@ -12,10 +12,14 @@ using MMirror.Model;
 
 
 
+
 namespace MMirror.Controller
 {
     class weatherController
     {
+        string jsData;
+        string jsDataForecast;
+
         //urlCurrent gives current data gives 
         String urlCurrent = "http://api.openweathermap.org/data/2.5/weather?id=2643743&appid=30b0e4a13dcb98a91143652520f8f108";
         //urlForecast gives future data in a long ass list
@@ -25,6 +29,7 @@ namespace MMirror.Controller
         string kuwaitCode = "285787";
         string ldnCode = "2643743";
         string glasgowCode = "5654320";
+        string alexCode = "361058";
         String API = "&APPID=30b0e4a13dcb98a91143652520f8f108"; //my personal api
 
         MMirrorManager mmc;
@@ -33,26 +38,95 @@ namespace MMirror.Controller
             this.mmc = manager;
         }
 
-        public void getWeatherJSON()
+        public void getWeatherJSON() 
         {  
+            // read settings and get info from settings class
+            ReadSettings rs = new ReadSettings();
+            Settings smo = Settings.instance;
+            string city = smo.city;
+           
+
+
             //the next five lines download and save the weather data for the given city (first the current data
             //then the forecasted data)
             WebClient n = new WebClient();
-            String jsData = n.DownloadString(urlCurrent);
-            jsData = jsData.Replace("3h", "h");
-            File.WriteAllText(Path.Combine(Environment.CurrentDirectory, @"../../Data/", "jsWeatherDataCurrent.json"), jsData);
-            
-            jsData = n.DownloadString(urlForecast);
-            jsData = jsData.Replace("3h", "h");
-            File.WriteAllText(Path.Combine(Environment.CurrentDirectory, @"../../Data/", "jsWeatherDataForecast.json"), jsData);
-            
+            WebClient m = new WebClient();
+            n.DownloadStringCompleted += new DownloadStringCompletedEventHandler(getNString);
+            m.DownloadStringCompleted += new DownloadStringCompletedEventHandler(getMString);
+            String jsData = "";
+            String jsDataForecast = "";
+            try
+            {
 
+                if (smo.city == "Alexandria")
+                {
+                    
+                    n.DownloadStringAsync(new System.Uri("http://api.openweathermap.org/data/2.5/weather?id=361058&appid=30b0e4a13dcb98a91143652520f8f108"),jsData);
+                    m.DownloadStringAsync(new System.Uri("http://api.openweathermap.org/data/2.5/forecast?id=361058&appid=30b0e4a13dcb98a91143652520f8f108"), jsDataForecast);
+                }
+                else if (smo.city == "Kuwait")
+                {
+                    n.DownloadStringAsync(new System.Uri("http://api.openweathermap.org/data/2.5/weather?id=285787&appid=30b0e4a13dcb98a91143652520f8f108"), jsData);
+                    m.DownloadStringAsync(new System.Uri("http://api.openweathermap.org/data/2.5/forecast?id=285787&appid=30b0e4a13dcb98a91143652520f8f108"), jsDataForecast);
+               }
+                else if (smo.city == "London")
+                {
+                    n.DownloadStringAsync(new System.Uri("http://api.openweathermap.org/data/2.5/weather?id=2643743&appid=30b0e4a13dcb98a91143652520f8f108"), jsData);
+                    m.DownloadStringAsync(new System.Uri("http://api.openweathermap.org/data/2.5/forecast?id=2643743&appid=30b0e4a13dcb98a91143652520f8f108"), jsDataForecast);
+                }
+                else if (smo.city == "Montreal")
+                {
+                    n.DownloadStringAsync(new System.Uri("http://api.openweathermap.org/data/2.5/weather?id=6077243&appid=30b0e4a13dcb98a91143652520f8f108"), jsData);
+                    m.DownloadStringAsync(new System.Uri("http://api.openweathermap.org/data/2.5/forecast?id=6077243&appid=30b0e4a13dcb98a91143652520f8f108"), jsDataForecast);
+                 }
+            }
+            catch (WebException e)
+            {
+                throw e;
+            }
+            
 
             //now we will have to create c# weatherDay classes with the selected attributes
+   
+        }
+        private void getNString(Object sender, DownloadStringCompletedEventArgs e)
+        {
+            jsData = e.Result;
+           
+        }
+        private void getMString(Object sender, DownloadStringCompletedEventArgs e)
+        {
+            jsDataForecast = e.Result;
+           
             createCurrentJSONObject();
         }
         private void createCurrentJSONObject()
         {
+
+
+            try
+            {
+                jsData = jsData.Replace("3h", "h");
+                File.WriteAllText(Path.Combine(Environment.CurrentDirectory, @"../../Data/", "jsWeatherDataCurrent.json"), jsData);
+
+            }
+            catch (Exception)
+            {
+                jsData = File.ReadAllText(@"../../Data/jsWeatherDataCurrent.json");
+            }
+
+
+            try
+            {
+                jsDataForecast = jsDataForecast.Replace("3h", "h");
+                File.WriteAllText(Path.Combine(Environment.CurrentDirectory, @"../../Data/", "jsWeatherDataForecast.json"), jsDataForecast);
+
+            }
+            catch (Exception)
+            {
+                jsDataForecast = File.ReadAllText(@"../../Data/jsWeatherDataForecast.json");
+            }
+
             //this dynamic build an object whose attributes are decided on runtime (seems like a shady coding 
             //practice but idc c# is bae)
             dynamic weatherCurrent = JObject.Parse(File.ReadAllText(Path.Combine(Environment.CurrentDirectory, @"../../Data/", "jsWeatherDataCurrent.json")));

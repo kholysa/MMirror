@@ -11,21 +11,22 @@ using MMirror.Model;
 using MMirror.Controller;
 using MMirror.View;
 using Raspberry.IO.GeneralPurpose;
+using System.Net;
 
 
 namespace MMirror
 {
    
-    public partial class Form1 : Form
+    public partial class WeatherView : Form
     {
         int edges = 0;
 
-        public Form1()
+        public WeatherView()
         {
-            InputPinConfiguration p = new InputPinConfiguration(ConnectorPin.P1Pin07.ToProcessor());
+            /*InputPinConfiguration p = new InputPinConfiguration(ConnectorPin.P1Pin07.ToProcessor());
             GpioConnection g = new GpioConnection(p);
             g.PinStatusChanged += g_Detected;
-
+            */
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
@@ -48,7 +49,7 @@ namespace MMirror
         private void Form1_Load(object sender, EventArgs e)
         {
             MMirrorManager mmc = MMirrorManager.Instance;
-
+            label2.Hide();
             //lotta code, but im just populating the labels with the relevant data
 
             //current temp
@@ -160,8 +161,28 @@ namespace MMirror
             tomorrow2.Text = Convert.ToString(dt.AddDays(2).DayOfWeek);
             tomorrow3.Text = Convert.ToString(dt.AddDays(3).DayOfWeek);
             tomorrow4.Text = Convert.ToString(dt.AddDays(4).DayOfWeek);
+            try
+            {
+                weatherController wc = new weatherController(mmc);
+                wc.getWeatherJSON();
+            }
+            catch (WebException)
+            {
+                label2.Show();
+                ErrorLabel();
+            }
         }
-
+        private void ErrorLabel()
+        {
+            System.Windows.Forms.Timer t = new Timer();
+            t.Interval = 3000;
+            t.Tick += new EventHandler(t_Elapsed);
+            t.Start();
+        }
+        void t_Elapsed(object sender, EventArgs e)
+        {
+            label2.Hide();
+        }
         private void label1_Click(object sender, EventArgs e)
         {
         }

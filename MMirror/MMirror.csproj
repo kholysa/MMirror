@@ -65,12 +65,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\stockInfo.cs" />
+    <Compile Include="Controller\stockController.cs" />
     <Compile Include="Controller\weatherController.cs" />
     <Compile Include="Model\MMirrorManager.cs" />
+    <Compile Include="Model\Settings.cs" />
+    <Compile Include="Model\ReadSettings.cs" />
     <Compile Include="Model\sports.cs" />
     <Compile Include="Model\stocks.cs" />
     <Compile Include="Model\weatherDay.cs" />
+    <Compile Include="View\DateAndTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DateAndTime.Designer.cs">
+      <DependentUpon>DateAndTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ErrorBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ErrorBox.Designer.cs">
+      <DependentUpon>ErrorBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\WeatherView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +108,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\DateAndTime.resx">
+      <DependentUpon>DateAndTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ErrorBox.resx">
+      <DependentUpon>ErrorBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\stockView.resx">
       <DependentUpon>stockView.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +123,7 @@
     <None Include="Data\city.list.json" />
     <None Include="Data\jsWeatherDataCurrent.json" />
     <None Include="Data\jsWeatherDataForecast.json" />
+    <None Include="Data\Settings.json" />
     <None Include="Data\stockInfo.csv" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\MMirror.Model.MMirrorManager.datasource" />
