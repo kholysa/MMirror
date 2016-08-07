@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblDate = new System.Windows.Forms.Label();
             this.lblDay = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
             this.lblHours = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -47,17 +47,6 @@
             this.panel1.Click += new System.EventHandler(this.DateAndTime_Click);
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // lblDate
-            // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Goudy Old Style", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.ForeColor = System.Drawing.Color.White;
-            this.lblDate.Location = new System.Drawing.Point(71, 171);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(136, 55);
-            this.lblDate.TabIndex = 8;
-            this.lblDate.Text = "label4";
-            // 
             // lblDay
             // 
             this.lblDay.AutoSize = true;
@@ -69,12 +58,23 @@
             this.lblDay.TabIndex = 9;
             this.lblDay.Text = "label4";
             // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Goudy Old Style", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.ForeColor = System.Drawing.Color.White;
+            this.lblDate.Location = new System.Drawing.Point(71, 247);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(136, 55);
+            this.lblDate.TabIndex = 8;
+            this.lblDate.Text = "label4";
+            // 
             // lblHours
             // 
             this.lblHours.AutoSize = true;
             this.lblHours.Font = new System.Drawing.Font("Goudy Old Style", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHours.ForeColor = System.Drawing.Color.White;
-            this.lblHours.Location = new System.Drawing.Point(71, 106);
+            this.lblHours.Location = new System.Drawing.Point(71, 149);
             this.lblHours.Name = "lblHours";
             this.lblHours.Size = new System.Drawing.Size(136, 55);
             this.lblHours.TabIndex = 5;

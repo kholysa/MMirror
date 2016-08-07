@@ -55,10 +55,11 @@ namespace MMirror
         
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            stockView = new stockView();
+            stockView = new View.stockView();
             edges = 0;
             state = 0;
-            stockView.Visible = true;              
+            stockView.Visible = true;
+            stockView.startFadeinTimer(); 
             Application.Run(stockView);  
  
            

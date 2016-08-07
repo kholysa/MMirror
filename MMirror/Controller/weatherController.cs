@@ -7,7 +7,7 @@ using System.Net;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using MMirror.Model;
-
+using System.Windows;
 
 
 
@@ -19,7 +19,7 @@ namespace MMirror.Controller
     {
         string jsData;
         string jsDataForecast;
-
+        public dynamic e;
         //urlCurrent gives current data gives 
         String urlCurrent = "http://api.openweathermap.org/data/2.5/weather?id=2643743&appid=30b0e4a13dcb98a91143652520f8f108";
         //urlForecast gives future data in a long ass list
@@ -80,9 +80,9 @@ namespace MMirror.Controller
                     m.DownloadStringAsync(new System.Uri("http://api.openweathermap.org/data/2.5/forecast?id=6077243&appid=30b0e4a13dcb98a91143652520f8f108"), jsDataForecast);
                  }
             }
-            catch (WebException e)
+            catch (Exception)
             {
-                throw e;
+                
             }
             
 
@@ -91,14 +91,30 @@ namespace MMirror.Controller
         }
         private void getNString(Object sender, DownloadStringCompletedEventArgs e)
         {
-            jsData = e.Result;
+
+            try
+            {
+                jsData = e.Result;
+            }
+            catch (Exception er)
+            {
+                this.e = er;
+            }
            
         }
         private void getMString(Object sender, DownloadStringCompletedEventArgs e)
         {
-            jsDataForecast = e.Result;
-           
-            createCurrentJSONObject();
+            try
+            {
+                jsDataForecast = e.Result;
+
+                createCurrentJSONObject();
+            }
+            catch (Exception er)
+            {
+                this.e = er;
+               
+            }
         }
         private void createCurrentJSONObject()
         {

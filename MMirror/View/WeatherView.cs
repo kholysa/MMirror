@@ -12,7 +12,9 @@ using MMirror.Controller;
 using MMirror.View;
 using Raspberry.IO.GeneralPurpose;
 using System.Net;
-
+using System.Windows.Media.Animation;
+using System.Windows;
+using System.IO;
 
 namespace MMirror
 {
@@ -20,7 +22,9 @@ namespace MMirror
     public partial class WeatherView : Form
     {
         int edges = 0;
-
+        Timer tn;
+        Timer tnt;
+        weatherController wc = new weatherController(MMirrorManager.instance);
         public WeatherView()
         {
             /*InputPinConfiguration p = new InputPinConfiguration(ConnectorPin.P1Pin07.ToProcessor());
@@ -30,31 +34,17 @@ namespace MMirror
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
-        }
-        public void g_Detected(object sender, PinStatusEventArgs e)
-        {
-            edges++;
-            if (edges == 1)
-            {
-                this.Close();
-                edges = 0;
-            }
-        }
-        private void onClicked(object sender, EventArgs e)
-        {
-            stockView stock = new stockView();
-            stock.Show();
-            this.Hide();
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
+            tn = new Timer();
+            tn.Interval = 1;
+            tn.Tick += t_Tick;
+            this.Opacity = 0.5;
             MMirrorManager mmc = MMirrorManager.Instance;
             label2.Hide();
             //lotta code, but im just populating the labels with the relevant data
 
             //current temp
             currentWeather.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[0].hi - 273.15) + "°C");
-            
+
             //next tweleve hours
             currentForecast1.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[0].twelveHourForcast[0] - 273.15) + "°C");
             currentForecast2.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[0].twelveHourForcast[1] - 273.15) + "°C");
@@ -78,9 +68,9 @@ namespace MMirror
                 }
                 else if (mmc.getWeather()[0].twelveHourTimes[i] == 0)
                 {
-                    timesInt[i] = mmc.getWeather()[0].twelveHourTimes[i]+12;
+                    timesInt[i] = mmc.getWeather()[0].twelveHourTimes[i] + 12;
                     times[i] = Convert.ToString(timesInt[i]) + "a";
-             
+
                 }
                 else
                 {
@@ -88,25 +78,25 @@ namespace MMirror
                     times[i] = Convert.ToString(timesInt[i]) + "a";
                 }
             }
-            currentTime1.Text = Convert.ToString(times[0]) ;
-            currentTime2.Text = Convert.ToString(times[1]) ;
-            currentTime3.Text = Convert.ToString(times[2]) ;
-            currentTime4.Text = Convert.ToString(times[3]) ;
+            currentTime1.Text = Convert.ToString(times[0]);
+            currentTime2.Text = Convert.ToString(times[1]);
+            currentTime3.Text = Convert.ToString(times[2]);
+            currentTime4.Text = Convert.ToString(times[3]);
 
             //the image of the humidity
             Image humidity = Image.FromFile(@"../../Data/50d.png");
-            currentHumidityIMG.Size = new Size(humidity.Width, humidity.Height);
+            currentHumidityIMG.Size = new System.Drawing.Size(humidity.Width, humidity.Height);
             currentHumidityIMG.Image = humidity;
 
             //humidity
-            currentHumidity.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[0].humidity)+"%");
+            currentHumidity.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[0].humidity) + "%");
             currentLocation.Text = "Current weather";
             location.Text = mmc.getWeather()[0].location;
             forecastWeather.Text = "Weather Forecast";
-            
+
             //image of current weather
-            Image img = Image.FromFile(@"../../Data/" + mmc.getWeather()[0].weatherConditions+".png");
-            currentImage.Size = new Size(img.Width, img.Height);
+            Image img = Image.FromFile(@"../../Data/" + mmc.getWeather()[0].weatherConditions + ".png");
+            currentImage.Size = new System.Drawing.Size(img.Width, img.Height);
             currentImage.Image = img;
 
             //only display this data if we recieve it
@@ -117,10 +107,10 @@ namespace MMirror
             else
             {
                 Image rain = Image.FromFile(@"../../Data/rain.png");
-                rainIMG.Size = new Size(50,50);
+                rainIMG.Size = new System.Drawing.Size(50, 50);
                 rainIMG.Image = rain;
                 currentRain.Text = Convert.ToString(Convert.ToDouble(mmc.getWeather()[0].rain) + "mm");
-         
+
             }
             if (mmc.getWeather()[0].snow == -50)
             {
@@ -129,9 +119,9 @@ namespace MMirror
             else
             {
                 Image snow = Image.FromFile(@"../../Data/snow.png");
-                snowIMG.Size = new Size(50, 50);
+                snowIMG.Size = new System.Drawing.Size(50, 50);
                 snowIMG.Image = snow;
-                
+
                 currentSnow.Text = Convert.ToString(Convert.ToInt32(mmc.getWeather()[0].snow) + "cm");
             }
 
@@ -161,16 +151,65 @@ namespace MMirror
             tomorrow2.Text = Convert.ToString(dt.AddDays(2).DayOfWeek);
             tomorrow3.Text = Convert.ToString(dt.AddDays(3).DayOfWeek);
             tomorrow4.Text = Convert.ToString(dt.AddDays(4).DayOfWeek);
+            
             try
             {
-                weatherController wc = new weatherController(mmc);
                 wc.getWeatherJSON();
             }
-            catch (WebException)
+            catch (Exception)
             {
-                label2.Show();
-                ErrorLabel();
             }
+            
+        }
+
+        void t_Tick(object sender, EventArgs e)
+        {
+            if (this.Opacity<0.01)
+            {
+                
+                tn.Enabled = false;
+                stockView stock = new stockView();
+                stock.Show();
+                stock.startFadeinTimer();
+                this.Close();
+               
+            
+            }
+           
+            this.Opacity -= 0.05;
+        }
+        public void g_Detected(object sender, PinStatusEventArgs e)
+        {
+            edges++;
+            if (edges == 1)
+            {
+                this.Close();
+                edges = 0;
+            }
+        }
+        public void startFadeinTimer()
+        {
+            tnt = new Timer();
+            tnt.Interval = 1;
+            tnt.Tick += tn_Tick;
+            tnt.Enabled = true;
+        }
+
+        void tn_Tick(object sender, EventArgs e)
+        {
+            if (this.Opacity == 1)
+            {
+                tnt.Enabled = false;
+            }
+            this.Opacity += 0.1;
+        }
+        private void onClicked(object sender, EventArgs e)
+        {
+            tn.Enabled = true; ;
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
         }
         private void ErrorLabel()
         {
@@ -189,7 +228,11 @@ namespace MMirror
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-
+            if (wc.e is Exception)
+            {
+                label2.Show();
+                ErrorLabel();
+            }
         }
 
         private void forecastWeather_Click(object sender, EventArgs e)

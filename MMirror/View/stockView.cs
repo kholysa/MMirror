@@ -15,6 +15,12 @@ namespace MMirror.View
     public partial class stockView : Form
     {
         int edges = 0;
+        //t is the fade in/out timer
+        //tn is the error timer
+        Timer t;
+        Timer tn;
+        stockController si = new stockController();
+                
         public stockView()
         {
            /* InputPinConfiguration p = new InputPinConfiguration(ConnectorPin.P1Pin07.ToProcessor());
@@ -25,8 +31,78 @@ namespace MMirror.View
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
-            
-       
+            t = new Timer();
+            t.Interval = 10;
+            t.Tick += t_Tick;
+
+            this.Opacity = 0;
+
+            MMirrorManager mmc = MMirrorManager.instance;
+            label42.Hide();
+            List<Label> stockData = new List<Label>(40);
+            var c = GetAll(this, typeof(Label));
+            for (int i = 0; i < c.Count(); i++)
+            {
+                c.ElementAt(i).Text = "";
+            }
+            label42.Text = "No Internet Connection. Try again Later";
+            label1.Text = mmc.getStock(0).stockName;
+            label2.Text = mmc.getStock(1).stockName;
+
+            label9.Text = mmc.getStock(0).closePrice + "";
+            label10.Text = mmc.getStock(1).closePrice + "";
+
+            label17.Text = mmc.getStock(0).avgVolume + "";
+            label18.Text = mmc.getStock(1).avgVolume + "";
+
+            label25.Text = mmc.getStock(0).volume + "";
+            label26.Text = mmc.getStock(1).volume + "";
+
+            label33.Text = mmc.getStock(0).volatility;
+            label34.Text = mmc.getStock(1).volatility;
+
+
+            try
+            {
+                si.getStockFile();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void t_Tick(object sender, EventArgs e)
+        {
+            if (this.Opacity < 0.01)
+            {
+                
+                t.Enabled = false;
+                DateAndTime dt = new DateAndTime();
+                dt.Show();
+                dt.startFadeinTimer();
+                this.Hide();
+
+
+            }
+
+            this.Opacity -= 0.05;
+        }
+        public void startFadeinTimer()
+        {
+            tn = new Timer();
+            tn.Interval = 10;
+            tn.Tick += tn_Tick;
+            tn.Enabled = true;
+        }
+
+        void tn_Tick(object sender, EventArgs e)
+        {
+            if (this.Opacity == 1)
+            {
+                tn.Enabled = false;
+            }
+            this.Opacity += 0.1;
+
         }
         public IEnumerable<Control> GetAll(Control control, Type type)
         {
@@ -48,41 +124,7 @@ namespace MMirror.View
 
         private void stockView_Load(object sender, EventArgs e)
         {
-            MMirrorManager mmc = MMirrorManager.instance;
-            label42.Hide();
-            List<Label> stockData = new List<Label>(40);
-            var c = GetAll(this, typeof(Label));
-            for (int i = 0; i < c.Count(); i++)
-            {
-                c.ElementAt(i).Text = "";
-            }
-            label42.Text = "No Internet Connection. Try again Later";
-            label1.Text = mmc.getStock(0).stockName;
-            label2.Text = mmc.getStock(1).stockName;
-
-            label9.Text = mmc.getStock(0).closePrice+"";
-            label10.Text = mmc.getStock(1).closePrice + "";
-
-            label17.Text = mmc.getStock(0).avgVolume + "";
-            label18.Text = mmc.getStock(1).avgVolume + "";
-
-            label25.Text = mmc.getStock(0).volume + "";
-            label26.Text = mmc.getStock(1).volume + "";
-
-            label33.Text = mmc.getStock(0).volatility;
-            label34.Text = mmc.getStock(1).volatility;
-
-
-            try
-            {
-                stockController si = new stockController();
-                si.getStockFile();
-            }
-            catch (NullReferenceException)
-            {
-                label42.Show();
-                ErrorLabel();
-            }
+           
         }
         private void ErrorLabel()
         {
@@ -93,19 +135,24 @@ namespace MMirror.View
         }
         void t_Elapsed(object sender, EventArgs e)
         {
+            //when three seconds have passed, hide the warning label
             label42.Hide();
+            t.Enabled = false;
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-          
+            //by this stage we know if we have an error or not
+            if (si.er is Exception)
+            {
+                label42.Show();
+                ErrorLabel();
+            }
         }
         private void onClicked(object sender, EventArgs e)
         {
-            DateAndTime windows = new DateAndTime();
-            windows.Show();
-            this.Hide();
-         
+            //start fade out timer
+            t.Enabled = true;
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)

@@ -12,6 +12,7 @@ namespace MMirror.Controller
 {
     class stockController
     {
+        public dynamic er;
         string data;
         public stockController(){}
         public void getStockFile()
@@ -42,7 +43,7 @@ namespace MMirror.Controller
             {
                 n.DownloadStringAsync(new Uri(URLModular), data);
             }
-            catch (WebException e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -53,9 +54,16 @@ namespace MMirror.Controller
         }
         private void getNData(Object sender, DownloadStringCompletedEventArgs e)
         {
-            data = e.Result;
-            File.WriteAllText(@"../../Data/stockInfo.csv", data);
-            readStockInfo();
+            try
+            {
+                data = e.Result;
+                File.WriteAllText(@"../../Data/stockInfo.csv", data);
+                readStockInfo();
+            }
+            catch (Exception e1)
+            {
+                this.er = e1;
+            }
         }
         public void readStockInfo()
         {
@@ -81,7 +89,7 @@ namespace MMirror.Controller
                         break;
                 }
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException)
             {
                 return;
             }

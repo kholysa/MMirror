@@ -1,6 +1,6 @@
 ﻿namespace MMirror.View
 {
-    partial class ErrorBox
+    partial class ErrorMessage
     {
         /// <summary>
         /// Required designer variable.
@@ -34,26 +34,27 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.BackColor = System.Drawing.Color.DarkRed;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(78, 93);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 37);
+            this.label1.Size = new System.Drawing.Size(1079, 52);
             this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.label1.Text = "No Internet Connection. Make sure you are connected.";
             // 
-            // ErrorBox
+            // ErrorMessage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.DarkRed;
-            this.ClientSize = new System.Drawing.Size(278, 244);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(1184, 212);
             this.Controls.Add(this.label1);
-            this.Name = "ErrorBox";
-            this.Text = "ErrorBox";
-            this.Load += new System.EventHandler(this.ErrorBox_Load);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "ErrorMessage";
+            this.Text = "ErrorMessage";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -19,7 +19,7 @@ namespace MMirror.Model
              *COPY FILE FROM DEFAULT DOWNLOAD TO DATA FOLDER AS HTML 
              */
             //read the string we sent from the phone
-            string json = File.ReadAllText(@"../../Data/settings.json");
+            string json = File.ReadAllText(@"../../Data/Settings.json");
             
             //remove the html tags (hopefully they never change)
    
