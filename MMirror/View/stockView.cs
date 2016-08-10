@@ -52,6 +52,7 @@ namespace MMirror.View
             label2.Text = mmc.getStock(1).stockName;
             label3.Text = mmc.getStock(2).stockName;
             label4.Text = mmc.getStock(3).stockName;
+            //the ugly forward slashes below are because we were converting the settings from an html file and apparently couldnt remove all the tags
 
             if (mmc.getStock(4).stockName == "\"^FTSE\"")
                 label5.Text = "FTSE 100";
