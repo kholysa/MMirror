@@ -31,8 +31,8 @@ namespace MMirror
             {
                 dynamic manager = JObject.Parse(File.ReadAllText(@"../../Data/tempArray.json"));
 
-                List<stocks> stock;
-                stock = manager.stock.ToObject<List<stocks>>();
+                stocks[] stock;
+                stock = manager.stock.ToObject<List<stocks>>().ToArray();
 
                 List<weatherDay> weather;
                 weather = manager.weather.ToObject<List<weatherDay>>();

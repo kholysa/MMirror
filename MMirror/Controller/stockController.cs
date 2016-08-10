@@ -64,6 +64,7 @@ namespace MMirror.Controller
             {
                 this.er = e1;
             }
+ 
         }
         public void readStockInfo()
         {
@@ -74,8 +75,7 @@ namespace MMirror.Controller
             
             int i = 0, j = 0;
             string[,] result = new string[stockList.Count, 5];
-            try
-            {
+          
                 foreach (var row in input.Split('\n'))
                 {
                     j = 0;
@@ -88,11 +88,8 @@ namespace MMirror.Controller
                     if (i == stockList.Count)
                         break;
                 }
-            }
-            catch (NullReferenceException)
-            {
-                return;
-            }
+            
+          
             MMirrorManager mmc = MMirrorManager.instance;
            
             //creating temp stock instance, populate with data from array
@@ -111,7 +108,7 @@ namespace MMirror.Controller
                 }else
                     temp.closePrice = Convert.ToDouble(result[i, 1]);
                 
-                if (result[i, 2] == "N/A")
+             /*   if (result[i, 2] == "N/A")
                 {
                     temp.volume = mmc.getStock(i).volume;
                 }else
@@ -122,7 +119,7 @@ namespace MMirror.Controller
                     temp.avgVolume = mmc.getStock(i).avgVolume;
                 }else
                     temp.avgVolume = Convert.ToDouble(result[i, 3]);
-
+                    */
                 if (result[i, 1] == "N/A")
                 {
                     temp.volatility = mmc.getStock(i).volatility;
@@ -137,14 +134,14 @@ namespace MMirror.Controller
                     temp.volatility = result[i, 4];
                 }
                 mmc.setStock(i, temp);
-             
-          }
+            
+            }
 
             // printing debugger :D   
             string json = Newtonsoft.Json.JsonConvert.SerializeObject(mmc);
             File.WriteAllText(Path.Combine(Environment.CurrentDirectory, @"../../Data/", "tempArray.json"), json);
-           
-    
+
+
 
         }
     }

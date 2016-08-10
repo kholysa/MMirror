@@ -71,6 +71,7 @@ namespace MMirror.Controller
                }
                 else if (smo.city == "London")
                 {
+                  
                     n.DownloadStringAsync(new System.Uri("http://api.openweathermap.org/data/2.5/weather?id=2643743&appid=30b0e4a13dcb98a91143652520f8f108"), jsData);
                     m.DownloadStringAsync(new System.Uri("http://api.openweathermap.org/data/2.5/forecast?id=2643743&appid=30b0e4a13dcb98a91143652520f8f108"), jsDataForecast);
                 }
@@ -98,6 +99,7 @@ namespace MMirror.Controller
             }
             catch (Exception er)
             {
+              
                 this.e = er;
             }
            
@@ -189,7 +191,7 @@ namespace MMirror.Controller
             mmc.setWeather(0, current);
             createForecastJSONObject();
         }
-        public void createForecastJSONObject()
+        private void createForecastJSONObject()
         {
             //dear god bear with me here
             //we get the next 40 data sets

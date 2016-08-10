@@ -19,10 +19,11 @@ namespace MMirror.View
         //tn is the error timer
         Timer t;
         Timer tn;
-        stockController si = new stockController();
+        stockController sc = new stockController();
                 
         public stockView()
         {
+            //when implementing this, just call whatever the onCLick calls, hopefully we wont crash and fail :))))
            /* InputPinConfiguration p = new InputPinConfiguration(ConnectorPin.P1Pin07.ToProcessor());
             GpioConnection g = new GpioConnection(p);
             g.PinStatusChanged += g_Detected;
@@ -46,25 +47,46 @@ namespace MMirror.View
                 c.ElementAt(i).Text = "";
             }
             label42.Text = "No Internet Connection. Try again Later";
+
             label1.Text = mmc.getStock(0).stockName;
             label2.Text = mmc.getStock(1).stockName;
+            label3.Text = mmc.getStock(2).stockName;
+            label4.Text = mmc.getStock(3).stockName;
+
+            if (mmc.getStock(4).stockName == "\"^FTSE\"")
+                label5.Text = "FTSE 100";
+            else if (mmc.getStock(4).stockName == "\"^FTMC\"")
+                label5.Text = "FTSE 250";
+            else if (mmc.getStock(4).stockName == "\"^N225\"")
+                label5.Text = "NIKKEI";
+
+            if (mmc.getStock(5).stockName == "\"BZZ15.NYM\"")
+                label6.Text = "Brent Crude Oil";
+            else if (mmc.getStock(5).stockName == "\"^GSPC\"")
+                label6.Text = "S"+'&'+"P 500";
+            else if (mmc.getStock(5).stockName == "\"WTI\"")
+                label6.Text = "WTI";
+
 
             label9.Text = mmc.getStock(0).closePrice + "";
             label10.Text = mmc.getStock(1).closePrice + "";
+            label11.Text = mmc.getStock(2).closePrice + "";
+            label12.Text = mmc.getStock(3).closePrice + "";
+            label13.Text = mmc.getStock(4).closePrice + "";
+            label14.Text = mmc.getStock(4).closePrice + "";
 
-            label17.Text = mmc.getStock(0).avgVolume + "";
-            label18.Text = mmc.getStock(1).avgVolume + "";
-
-            label25.Text = mmc.getStock(0).volume + "";
-            label26.Text = mmc.getStock(1).volume + "";
 
             label33.Text = mmc.getStock(0).volatility;
             label34.Text = mmc.getStock(1).volatility;
+            label35.Text = mmc.getStock(2).volatility;
+            label36.Text = mmc.getStock(3).volatility;
+            label21.Text = mmc.getStock(4).volatility;
+            label22.Text = mmc.getStock(5).volatility;
 
 
             try
             {
-                si.getStockFile();
+                sc.getStockFile();
             }
             catch (Exception)
             {
@@ -143,7 +165,7 @@ namespace MMirror.View
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             //by this stage we know if we have an error or not
-            if (si.er is Exception)
+            if (sc.er is Exception)
             {
                 label42.Show();
                 ErrorLabel();
@@ -265,18 +287,10 @@ namespace MMirror.View
             if (label33.Text.Contains('+'))
             {
                 label1.ForeColor = Color.Green;
-                label9.ForeColor = Color.Green;
-                label17.ForeColor = Color.Green;
-                label25.ForeColor = Color.Green;
-                label33.ForeColor = Color.Green;
             }
             else
             {
                 label1.ForeColor = Color.Red;
-                label9.ForeColor = Color.Red;
-                label17.ForeColor = Color.Red;
-                label25.ForeColor = Color.Red;
-                label33.ForeColor = Color.Red;
             }
         }
 
@@ -289,19 +303,69 @@ namespace MMirror.View
         {
             if (label34.Text.Contains('+'))
             {
-                label34.ForeColor = Color.Green;
                 label2.ForeColor = Color.Green;
-                label10.ForeColor = Color.Green;
-                label18.ForeColor = Color.Green;
-                label26.ForeColor = Color.Green;
+
             }
             else
             {
-                label34.ForeColor = Color.Red;
                 label2.ForeColor = Color.Red;
-                label10.ForeColor = Color.Red;
-                label18.ForeColor = Color.Red;
-                label26.ForeColor = Color.Red;
+
+            }
+        }
+
+        private void label21_TextChanged(object sender, EventArgs e)
+        {
+            if (label21.Text.Contains('+'))
+            {
+                label5.ForeColor = Color.Green;
+
+            }
+            else
+            {
+                label5.ForeColor = Color.Red;
+
+            }
+        }
+
+        private void label35_TextChanged(object sender, EventArgs e)
+        {
+            if (label35.Text.Contains('+'))
+            {
+                label3.ForeColor = Color.Green;
+
+            }
+            else
+            {
+                label3.ForeColor = Color.Red;
+
+            }
+        }
+
+        private void label36_TextChanged(object sender, EventArgs e)
+        {
+            if (label36.Text.Contains('+'))
+            {
+                label4.ForeColor = Color.Green;
+
+            }
+            else
+            {
+                label4.ForeColor = Color.Red;
+
+            }
+        }
+
+        private void label22_TextChanged(object sender, EventArgs e)
+        {
+            if (label2.Text.Contains('+'))
+            {
+                label6.ForeColor = Color.Green;
+
+            }
+            else
+            {
+                label6.ForeColor = Color.Red;
+
             }
         }
     }
