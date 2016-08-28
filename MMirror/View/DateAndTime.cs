@@ -20,20 +20,24 @@ namespace MMirror.View
         System.Windows.Forms.Timer tnt;
         public DateAndTime()
         {
-            /* InputPinConfiguration p = new InputPinConfiguration(ConnectorPin.P1Pin07.ToProcessor());
-          GpioConnection g = new GpioConnection(p);
-          g.PinStatusChanged += g_Detected;
+        
             
-          */
+          
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
             //let the labels update every minute
             //this is done by an event being raised every minute
             //the event modifies the labels
+
             tn = new System.Windows.Forms.Timer();
             tn.Interval = 1;
             tn.Tick += t_Tick_fade;
+
+            InputPinConfiguration p = new InputPinConfiguration(ConnectorPin.P1Pin07.ToProcessor());
+            GpioConnection g = new GpioConnection(p);
+            g.PinStatusChanged += g_Detected;
+            startFadeinTimer();
             StartTimer();
             this.Opacity = 0;
         }
@@ -83,7 +87,7 @@ namespace MMirror.View
         void t_Tick(object sender, EventArgs e)
         {
             //setting the hours format as 12 hour display
-            if (DateTime.Now.Hour < 12)
+            if (DateTime.Now.Hour < 12 && DateTime.Now.Hour!=0)
             {
                 lblHours.Text = DateTime.Now.Hour.ToString()+":";
                 if (DateTime.Now.Minute.ToString().Length == 1)
@@ -147,12 +151,18 @@ namespace MMirror.View
             
         }
         public void g_Detected(object sender, PinStatusEventArgs e)
-        {
+        {         
+            //start fade out timer
             edges++;
-            if (edges == 1)
+            if (edges == 2)
             {
+                //t.Enabled = true;
+                for (int i = 0; i < 20; i++)
+                {
+                    this.Opacity -= 0.05;
+                    System.Threading.Thread.Sleep(10);
+                }
                 this.Close();
-                edges = 0;
             }
         }
 

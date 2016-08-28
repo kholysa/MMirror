@@ -201,7 +201,7 @@
             this.forecastWeather.AutoSize = true;
             this.forecastWeather.Font = new System.Drawing.Font("Georgia", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.forecastWeather.ForeColor = System.Drawing.Color.White;
-            this.forecastWeather.Location = new System.Drawing.Point(1529, 16);
+            this.forecastWeather.Location = new System.Drawing.Point(1385, 6);
             this.forecastWeather.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.forecastWeather.Name = "forecastWeather";
             this.forecastWeather.Size = new System.Drawing.Size(298, 38);
@@ -263,7 +263,7 @@
             this.forecastLo4.AutoSize = true;
             this.forecastLo4.Font = new System.Drawing.Font("Georgia", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.forecastLo4.ForeColor = System.Drawing.Color.LightGray;
-            this.forecastLo4.Location = new System.Drawing.Point(1758, 305);
+            this.forecastLo4.Location = new System.Drawing.Point(1614, 295);
             this.forecastLo4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.forecastLo4.Name = "forecastLo4";
             this.forecastLo4.Size = new System.Drawing.Size(74, 29);
@@ -275,7 +275,7 @@
             this.forecastLo3.AutoSize = true;
             this.forecastLo3.Font = new System.Drawing.Font("Georgia", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.forecastLo3.ForeColor = System.Drawing.Color.LightGray;
-            this.forecastLo3.Location = new System.Drawing.Point(1758, 234);
+            this.forecastLo3.Location = new System.Drawing.Point(1614, 224);
             this.forecastLo3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.forecastLo3.Name = "forecastLo3";
             this.forecastLo3.Size = new System.Drawing.Size(74, 29);
@@ -287,7 +287,7 @@
             this.forecastLo2.AutoSize = true;
             this.forecastLo2.Font = new System.Drawing.Font("Georgia", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.forecastLo2.ForeColor = System.Drawing.Color.LightGray;
-            this.forecastLo2.Location = new System.Drawing.Point(1758, 163);
+            this.forecastLo2.Location = new System.Drawing.Point(1614, 153);
             this.forecastLo2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.forecastLo2.Name = "forecastLo2";
             this.forecastLo2.Size = new System.Drawing.Size(74, 29);
@@ -299,7 +299,7 @@
             this.forecastLo1.AutoSize = true;
             this.forecastLo1.Font = new System.Drawing.Font("Georgia", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.forecastLo1.ForeColor = System.Drawing.Color.LightGray;
-            this.forecastLo1.Location = new System.Drawing.Point(1758, 92);
+            this.forecastLo1.Location = new System.Drawing.Point(1614, 82);
             this.forecastLo1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.forecastLo1.Name = "forecastLo1";
             this.forecastLo1.Size = new System.Drawing.Size(74, 29);
@@ -310,7 +310,7 @@
             // 
             this.tomorrow4.Font = new System.Drawing.Font("Georgia", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tomorrow4.ForeColor = System.Drawing.Color.White;
-            this.tomorrow4.Location = new System.Drawing.Point(1512, 302);
+            this.tomorrow4.Location = new System.Drawing.Point(1368, 292);
             this.tomorrow4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.tomorrow4.Name = "tomorrow4";
             this.tomorrow4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -323,7 +323,7 @@
             // 
             this.tomorrow3.Font = new System.Drawing.Font("Georgia", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tomorrow3.ForeColor = System.Drawing.Color.White;
-            this.tomorrow3.Location = new System.Drawing.Point(1512, 233);
+            this.tomorrow3.Location = new System.Drawing.Point(1368, 223);
             this.tomorrow3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.tomorrow3.Name = "tomorrow3";
             this.tomorrow3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -336,7 +336,7 @@
             // 
             this.tomorrow2.Font = new System.Drawing.Font("Georgia", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tomorrow2.ForeColor = System.Drawing.Color.White;
-            this.tomorrow2.Location = new System.Drawing.Point(1512, 161);
+            this.tomorrow2.Location = new System.Drawing.Point(1368, 151);
             this.tomorrow2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.tomorrow2.Name = "tomorrow2";
             this.tomorrow2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -349,7 +349,7 @@
             // 
             this.Tomorrow.Font = new System.Drawing.Font("Georgia", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tomorrow.ForeColor = System.Drawing.Color.White;
-            this.Tomorrow.Location = new System.Drawing.Point(1512, 90);
+            this.Tomorrow.Location = new System.Drawing.Point(1368, 80);
             this.Tomorrow.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Tomorrow.Name = "Tomorrow";
             this.Tomorrow.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -373,7 +373,7 @@
             // currentHumidityIMG
             // 
             this.currentHumidityIMG.Location = new System.Drawing.Point(6, 235);
-            this.currentHumidityIMG.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.currentHumidityIMG.Margin = new System.Windows.Forms.Padding(2);
             this.currentHumidityIMG.Name = "currentHumidityIMG";
             this.currentHumidityIMG.Size = new System.Drawing.Size(33, 45);
             this.currentHumidityIMG.TabIndex = 33;
@@ -382,7 +382,7 @@
             // rainIMG
             // 
             this.rainIMG.Location = new System.Drawing.Point(5, 292);
-            this.rainIMG.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rainIMG.Margin = new System.Windows.Forms.Padding(2);
             this.rainIMG.Name = "rainIMG";
             this.rainIMG.Size = new System.Drawing.Size(33, 45);
             this.rainIMG.TabIndex = 34;
@@ -391,7 +391,7 @@
             // snowIMG
             // 
             this.snowIMG.Location = new System.Drawing.Point(5, 349);
-            this.snowIMG.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.snowIMG.Margin = new System.Windows.Forms.Padding(2);
             this.snowIMG.Name = "snowIMG";
             this.snowIMG.Size = new System.Drawing.Size(33, 45);
             this.snowIMG.TabIndex = 35;
@@ -399,8 +399,8 @@
             // 
             // forecastIMG1
             // 
-            this.forecastIMG1.Location = new System.Drawing.Point(1647, 81);
-            this.forecastIMG1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.forecastIMG1.Location = new System.Drawing.Point(1503, 71);
+            this.forecastIMG1.Margin = new System.Windows.Forms.Padding(2);
             this.forecastIMG1.Name = "forecastIMG1";
             this.forecastIMG1.Size = new System.Drawing.Size(33, 32);
             this.forecastIMG1.TabIndex = 36;
@@ -408,8 +408,8 @@
             // 
             // forecastIMG2
             // 
-            this.forecastIMG2.Location = new System.Drawing.Point(1647, 151);
-            this.forecastIMG2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.forecastIMG2.Location = new System.Drawing.Point(1503, 141);
+            this.forecastIMG2.Margin = new System.Windows.Forms.Padding(2);
             this.forecastIMG2.Name = "forecastIMG2";
             this.forecastIMG2.Size = new System.Drawing.Size(33, 32);
             this.forecastIMG2.TabIndex = 37;
@@ -417,8 +417,8 @@
             // 
             // forecastIMG3
             // 
-            this.forecastIMG3.Location = new System.Drawing.Point(1647, 222);
-            this.forecastIMG3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.forecastIMG3.Location = new System.Drawing.Point(1503, 212);
+            this.forecastIMG3.Margin = new System.Windows.Forms.Padding(2);
             this.forecastIMG3.Name = "forecastIMG3";
             this.forecastIMG3.Size = new System.Drawing.Size(33, 32);
             this.forecastIMG3.TabIndex = 38;
@@ -426,8 +426,8 @@
             // 
             // forecastIMG4
             // 
-            this.forecastIMG4.Location = new System.Drawing.Point(1647, 293);
-            this.forecastIMG4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.forecastIMG4.Location = new System.Drawing.Point(1503, 283);
+            this.forecastIMG4.Margin = new System.Windows.Forms.Padding(2);
             this.forecastIMG4.Name = "forecastIMG4";
             this.forecastIMG4.Size = new System.Drawing.Size(33, 32);
             this.forecastIMG4.TabIndex = 39;
@@ -436,7 +436,7 @@
             // currentImage
             // 
             this.currentImage.Location = new System.Drawing.Point(15, 115);
-            this.currentImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.currentImage.Margin = new System.Windows.Forms.Padding(2);
             this.currentImage.Name = "currentImage";
             this.currentImage.Size = new System.Drawing.Size(33, 32);
             this.currentImage.TabIndex = 40;
@@ -447,7 +447,7 @@
             this.forecastTemp4.AutoSize = true;
             this.forecastTemp4.Font = new System.Drawing.Font("Georgia", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.forecastTemp4.ForeColor = System.Drawing.Color.White;
-            this.forecastTemp4.Location = new System.Drawing.Point(1695, 293);
+            this.forecastTemp4.Location = new System.Drawing.Point(1551, 283);
             this.forecastTemp4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.forecastTemp4.Name = "forecastTemp4";
             this.forecastTemp4.Size = new System.Drawing.Size(98, 38);
@@ -459,7 +459,7 @@
             this.forecastTemp3.AutoSize = true;
             this.forecastTemp3.Font = new System.Drawing.Font("Georgia", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.forecastTemp3.ForeColor = System.Drawing.Color.White;
-            this.forecastTemp3.Location = new System.Drawing.Point(1695, 224);
+            this.forecastTemp3.Location = new System.Drawing.Point(1551, 214);
             this.forecastTemp3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.forecastTemp3.Name = "forecastTemp3";
             this.forecastTemp3.Size = new System.Drawing.Size(98, 38);
@@ -471,7 +471,7 @@
             this.forecastTemp2.AutoSize = true;
             this.forecastTemp2.Font = new System.Drawing.Font("Georgia", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.forecastTemp2.ForeColor = System.Drawing.Color.White;
-            this.forecastTemp2.Location = new System.Drawing.Point(1695, 152);
+            this.forecastTemp2.Location = new System.Drawing.Point(1551, 142);
             this.forecastTemp2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.forecastTemp2.Name = "forecastTemp2";
             this.forecastTemp2.Size = new System.Drawing.Size(98, 38);
@@ -483,7 +483,7 @@
             this.forecastTemp1.AutoSize = true;
             this.forecastTemp1.Font = new System.Drawing.Font("Georgia", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.forecastTemp1.ForeColor = System.Drawing.Color.White;
-            this.forecastTemp1.Location = new System.Drawing.Point(1695, 81);
+            this.forecastTemp1.Location = new System.Drawing.Point(1551, 71);
             this.forecastTemp1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.forecastTemp1.Name = "forecastTemp1";
             this.forecastTemp1.Size = new System.Drawing.Size(98, 38);
@@ -544,9 +544,9 @@
             this.panel1.Controls.Add(this.currentForecast1);
             this.panel1.Controls.Add(this.currentWeather);
             this.panel1.Location = new System.Drawing.Point(3, 8);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1908, 396);
+            this.panel1.Size = new System.Drawing.Size(1908, 684);
             this.panel1.TabIndex = 1;
             this.panel1.Click += new System.EventHandler(this.onClicked);
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
@@ -557,10 +557,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.ClientSize = new System.Drawing.Size(1743, 1041);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "WeatherView";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

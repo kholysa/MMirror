@@ -19,22 +19,26 @@ namespace MMirror.View
         //tn is the error timer
         Timer t;
         Timer tn;
+
+        System.Windows.Forms.Timer error;
         stockController sc = new stockController();
                 
         public stockView()
         {
             //when implementing this, just call whatever the onCLick calls, hopefully we wont crash and fail :))))
-           /* InputPinConfiguration p = new InputPinConfiguration(ConnectorPin.P1Pin07.ToProcessor());
-            GpioConnection g = new GpioConnection(p);
-            g.PinStatusChanged += g_Detected;
+       
             
-            */
+            
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
             t = new Timer();
             t.Interval = 10;
             t.Tick += t_Tick;
+
+            InputPinConfiguration p = new InputPinConfiguration(ConnectorPin.P1Pin07.ToProcessor());
+            GpioConnection g = new GpioConnection(p);
+            g.PinStatusChanged += g_Detected;
 
             this.Opacity = 0;
 
@@ -84,7 +88,7 @@ namespace MMirror.View
             label21.Text = mmc.getStock(4).volatility;
             label22.Text = mmc.getStock(5).volatility;
 
-
+            startFadeinTimer();
             try
             {
                 sc.getStockFile();
@@ -98,14 +102,8 @@ namespace MMirror.View
         {
             if (this.Opacity < 0.01)
             {
-                
                 t.Enabled = false;
-                DateAndTime dt = new DateAndTime();
-                dt.Show();
-                dt.startFadeinTimer();
-                this.Hide();
-
-
+                this.Close();
             }
 
             this.Opacity -= 0.05;
@@ -137,13 +135,19 @@ namespace MMirror.View
         }
         public void g_Detected(object sender, PinStatusEventArgs e)
         {
+            //start fade out timer
             edges++;
-            if (edges == 1)
+            if (edges == 2)
             {
+                //t.Enabled = true;
+                for (int i = 0; i < 20; i++)
+                {
+                    this.Opacity -= 0.05;
+                    System.Threading.Thread.Sleep(10);
+                }
                 this.Close();
-                edges = 0;
             }
-        }
+       }
 
         private void stockView_Load(object sender, EventArgs e)
         {
@@ -151,16 +155,16 @@ namespace MMirror.View
         }
         private void ErrorLabel()
         {
-            System.Windows.Forms.Timer t = new Timer();
-            t.Interval = 3000;
-            t.Tick += new EventHandler(t_Elapsed);
-            t.Start();
+            error = new Timer();
+            error.Interval = 3000;
+            error.Tick += new EventHandler(t_Elapsed);
+            error.Start();
         }
         void t_Elapsed(object sender, EventArgs e)
         {
             //when three seconds have passed, hide the warning label
             label42.Hide();
-            t.Enabled = false;
+            error.Enabled = false;
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

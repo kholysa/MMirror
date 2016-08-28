@@ -27,16 +27,20 @@ namespace MMirror
         weatherController wc = new weatherController(MMirrorManager.instance);
         public WeatherView()
         {
-            /*InputPinConfiguration p = new InputPinConfiguration(ConnectorPin.P1Pin07.ToProcessor());
-            GpioConnection g = new GpioConnection(p);
-            g.PinStatusChanged += g_Detected;
-            */
+           
+            
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
+
             tn = new Timer();
             tn.Interval = 1;
             tn.Tick += t_Tick;
+
+            InputPinConfiguration p = new InputPinConfiguration(ConnectorPin.P1Pin07.ToProcessor());
+            GpioConnection g = new GpioConnection(p);
+            g.PinStatusChanged += g_Detected;
+
             this.Opacity = 0.5;
             MMirrorManager mmc = MMirrorManager.Instance;
             label2.Hide();
@@ -151,7 +155,8 @@ namespace MMirror
             tomorrow2.Text = Convert.ToString(dt.AddDays(2).DayOfWeek);
             tomorrow3.Text = Convert.ToString(dt.AddDays(3).DayOfWeek);
             tomorrow4.Text = Convert.ToString(dt.AddDays(4).DayOfWeek);
-            
+
+            startFadeinTimer();
             try
             {
                 wc.getWeatherJSON();
@@ -168,9 +173,7 @@ namespace MMirror
             {
                 
                 tn.Enabled = false;
-                stockView stock = new stockView();
-                stock.Show();
-                stock.startFadeinTimer();
+           
                 this.Close();
                
             
@@ -180,11 +183,17 @@ namespace MMirror
         }
         public void g_Detected(object sender, PinStatusEventArgs e)
         {
+            //start fade out timer
             edges++;
-            if (edges == 1)
+            if (edges == 2)
             {
+                //t.Enabled = true;
+                for (int i = 0; i < 20; i++)
+                {
+                    this.Opacity -= 0.05;
+                    System.Threading.Thread.Sleep(10);
+                }
                 this.Close();
-                edges = 0;
             }
         }
         public void startFadeinTimer()

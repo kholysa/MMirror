@@ -53,7 +53,7 @@ namespace MMirror
 
            
         
-            Application.EnableVisualStyles();
+           /* Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             stockView = new View.stockView();
             edges = 0;
@@ -62,35 +62,57 @@ namespace MMirror
             stockView.startFadeinTimer(); 
             Application.Run(stockView);  
  
-           
+           */
 
-            /*InputPinConfiguration p = new InputPinConfiguration(ConnectorPin.P1Pin07.ToProcessor());
+            InputPinConfiguration p = new InputPinConfiguration(ConnectorPin.P1Pin07.ToProcessor());
             GpioConnection g = new GpioConnection (p);
             g.PinStatusChanged += g_detected;
-  */
+  
         }
         static void g_detected(object sender,PinStatusEventArgs e)
         {
             edges++;
             if (edges == 2 && state == 0)
             {
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                stockView = new stockView();
-                edges = 0;
-                state = 1;
-                Application.Run(stockView);
+                while (true)
+                {
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    stockView = new stockView();
+                    edges = 0;
+                    state = 1;
+                    Application.Run(stockView);
+
+
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    weatherView = new WeatherView();
+                    edges = 0;
+                    state = 2;
+                    Application.Run(weatherView);
+
+
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    DateAndTime dt = new DateAndTime();
+                    edges = 0;
+                    state = 0;
+                    dt.Visible = true;
+                    Application.Run(dt);
+                }
             }
-            else if (edges == 2 && state == 1)
+           /* else if (edges == 2 && state == 1)
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                weatherView = new WeatherView();
-                edges = 0;
-                state = 0;
-                weatherView.Visible = true;
-                Application.Run(weatherView);
+             ;
             }
+            else if (edges == 2 && state == 2)
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+            
+            }*/
         }
     }
 }
